@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if user and user.authenticate(params[:password])
         session[:user_id] = user.id
         session[:user_name] = user.name
-        redirect_to user, alert: "Sucessfully Logged in"
+        redirect_to users_url, alert: "Sucessfully Logged in"
     else
         redirect_to login_url, alert:"Wrong Username or Password!"
     end

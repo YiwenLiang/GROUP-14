@@ -1,4 +1,4 @@
-<div>
+<h1>Welcome to Siteseers!</h1><div>
 <% if flash[:alert] %>
 <p id="notice"><%= flash[:alert] %> </p>
 <% end %>
@@ -19,4 +19,6 @@
 </fieldset>
 <% end %>
 </div>
+
+<%= link_to 'Not a member? Sign up here!', new_user_path %>
 
