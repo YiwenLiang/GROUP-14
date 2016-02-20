@@ -1,5 +1,57 @@
 <h1>New User</h1>
 
-<%= render 'form' %>
+<body id = "newPage">
 
-<%= link_to 'Back', users_path %>
+<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
+</div>
+
+<div id = "secondBorder"></div>
+<%= image_tag("8.jpg", class: "picture8") %>
+<%= image_tag("7.jpg", class: "picture7") %>
+<%= image_tag("9.jpg", class: "picture9") %>
+<%= image_tag("5.jpg", class: "picture5") %>
+<%= image_tag("4.jpg", class: "picture4") %>
+<%= image_tag("2.jpg", class: "picture2") %>
+
+<p id ="newText">Take the first step towards your adventure by simply signing up!</p>
+
+<p id = "newLine">______________________________________________________________</p>
+
+<h3 id = "newLogin">Registration</h3>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div id = "inputPart">
+  
+  <div class="field">
+    <%= f.label :name, class: "name" %><br>
+    <%= f.text_field :name, class: "nameField" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :password, class: "password"%><br>
+    <%= f.password_field :password, class: "passwordField" %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation, class: "confirmation" %><br>
+    <%= f.password_field :password_confirmation, class: "confirmationField" %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "createButton" %>
+  </div>
+<% end %>
+
+</div>
+
+<%= link_to 'Back', login_path, class: "newBack" %>

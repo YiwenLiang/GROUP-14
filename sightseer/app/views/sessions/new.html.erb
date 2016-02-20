@@ -1,24 +1,33 @@
-<h1>Welcome to Siteseers!</h1><div>
+<body id = "loginPage">
+
+<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
+<%= link_to 'Not a member? Sign up here!', new_user_path, class: "signUp" %>
+</div>
+
+<div id = "secondBorder"></div>
+
+<h1 id = "welcome">Welcome to Sightseer,<br> &nbsp&nbsp&nbsp&nbsp the Perfect trip planner</h1>
+<h3 id = "message"> &nbsp&nbsp&nbsp&nbspMake memories that will last Forever</h3>
+<div>
+  
 <% if flash[:alert] %>
 <p id="notice"><%= flash[:alert] %> </p>
 <% end %>
 <%= form_tag do %>
-<fieldset>
-  <legend> 
-  Log In  
-  </legend>
+<fieldset id = "field">
   <div>
-  <%= label_tag :name, 'Name' %>
-  <%= text_field_tag :name, params[:name] %>
-  <%= label_tag :password, 'Password' %>
-  <%= password_field_tag :password, params[:password] %>
+  <%= label_tag :name, 'Name', class: "new" %>
+  <%= text_field_tag :name, params[:name], class: "newB" %>
+  <%= label_tag :password, 'Password', class: "pass" %>
+  <%= password_field_tag :password, params[:password], class: "passB" %>
   </div>
   <div>
-    <%= submit_tag "Login" %>
+    <%= submit_tag "Login", class: "login" %>
   </div>
 </fieldset>
 <% end %>
 </div>
 
-<%= link_to 'Not a member? Sign up here!', new_user_path %>
 
+
+</body>
