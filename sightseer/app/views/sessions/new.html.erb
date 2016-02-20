@@ -16,8 +16,9 @@
 <%= form_tag do %>
 <fieldset id = "field">
   <div>
-  <%= label_tag :name, 'Name', class: "new" %>
-  <%= text_field_tag :name, params[:name], class: "newB" %>
+  <%= label_tag :username, 'Name', class: "new" %>
+  <%= text_field_tag :username, params[:username], class: "newB" %>
+
   <%= label_tag :password, 'Password', class: "pass" %>
   <%= password_field_tag :password, params[:password], class: "passB" %>
   </div>
