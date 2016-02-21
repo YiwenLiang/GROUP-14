@@ -1,36 +1,10 @@
-<h1> Users</h1>
+<h1> Welcome To Our Site</h1>
 <% if notice%>
 <p id = "notice"><%= notice%></p>
-<% end%>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <td><h3>User Name &nbsp&nbsp&nbsp&nbsp</h3></td>
-      <td><h3>First Name &nbsp&nbsp&nbsp&nbsp</h3></td>
-      <td><h3>Last Name &nbsp&nbsp&nbsp&nbsp</h3></td>
-      <td><h3>Email &nbsp&nbsp&nbsp&nbsp</h3></td>
 
-    </tr>
-  </thead>
+<% @current_user ||= User.find_by(id: session[:user_id]) %> <!-- This line gets the user's ID**Needed for EDIT**-->
+<%= link_to 'Edit Your Profile', edit_user_url(@current_user.id) %>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.username %></td>
-        <td><%= user.firstname %></td>
-        <td><%= user.lastname %></td>
-        <td><%= user.email %></td>
-        <td><%= user.password %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Not a member? click here!', new_user_path %>
-<%= link_to 'Back', users_path %>
+<%= link_to 'Sign Out', login_url %>

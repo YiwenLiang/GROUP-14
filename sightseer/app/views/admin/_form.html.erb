@@ -31,19 +31,11 @@
     <%= f.text_field :email %>
   </div>
   
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
 
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
 
-<%= link_to 'Not a member? click here!', new_user_path %>
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', admin_url %>

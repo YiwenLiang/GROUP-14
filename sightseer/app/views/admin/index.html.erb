@@ -1,2 +1,40 @@
-<h1>Admin#index</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
+<h1>Welcome Admin these are the users</h1>
+
+<% if notice%>
+<p id = "notice"><%= notice%></p>
+<% end%>
+
+<table>
+  <thead>
+    <tr>
+      <td><h3>User Name &nbsp&nbsp&nbsp&nbsp</h3></td>
+      <td><h3>First Name &nbsp&nbsp&nbsp&nbsp</h3></td>
+      <td><h3>Last Name &nbsp&nbsp&nbsp&nbsp</h3></td>
+      <td><h3>Email &nbsp&nbsp&nbsp&nbsp</h3></td>
+      <td><h3>Is Admin &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h3></td>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <% if user.username == "admin"%>
+        
+        <% else %>
+        <td><%= user.username %></td>
+        <td><%= user.firstname %></td>
+        <td><%= user.lastname %></td>
+        <td><%= user.email %></td>
+        <td><%= user.admin %> </td>
+        <td><%= link_to 'Edit', edit_admin_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Sign Out', login_url %>
