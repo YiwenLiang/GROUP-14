@@ -2,8 +2,15 @@
   <td><h3>How did you find yourself here?</h3></td>
   <%= link_to 'Back', index_url %>
 <% else %>
+<body id = "adminPage">
+<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
+</div>
 
+<div id = "secondBorder"></div>
+
+<div id = "wholepage">
 <h1>Welcome <%= session[:user_username] %> these are the users currently in our database</h1>
+
 
 
 <% if notice%>
@@ -52,3 +59,6 @@
 <%= link_to 'Sign Out', login_url %>
 
 <% end %>
+
+</div>
+</body>
