@@ -1,5 +1,11 @@
-<h1>Edit Your Details</h1>
+<body id = "adminEdit">
 
+<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
+</div>
+
+<div id = "secondBorder"></div>
+<h1> Editing  <%= session[:user_username] %>'s Details</h1>
+<div id = "adminForm"></div>
 <%= render 'form' %>
-
+</body>
 

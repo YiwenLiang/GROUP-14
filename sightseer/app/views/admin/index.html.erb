@@ -1,7 +1,4 @@
-<% if $isadmin != true %>
-  <td><h3>How did you find yourself here?</h3></td>
-  <%= link_to 'Back', index_url %>
-<% else %>
+
 <body id = "adminPage">
 <div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
 </div>
@@ -9,7 +6,13 @@
 <div id = "secondBorder"></div>
 
 <div id = "wholepage">
-<h1>Welcome <%= session[:user_username] %> these are the users currently in our database</h1>
+  
+  
+  <% if $isadmin != true %>
+  <td><h2>How did you find yourself here?</h2></td>
+  <%= link_to 'Back', index_url %>
+  <% else %>
+<h1>Welcome <font color = "red"><%= session[:user_username] %></font> these are the users currently in our database</h1>
 
 
 
@@ -34,7 +37,7 @@
       <tr>
         <% if user.username != "admin"%>
           <% if user.username == session[:user_username] %>
-          <td><font color = "green">*<%= user.username %></font></td>
+          <td><font color = "red">*<%= user.username %></font></td>
           <% else%>
           <td><%= user.username %></td>
           <% end %>
@@ -46,6 +49,8 @@
           <% if user.id != session[:user_id] %>
         <td><%= link_to 'Edit', edit_admin_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete %></td>
+          <%else%>
+        <td><%= link_to 'Edit Your Profile', edit_user_url(user.id) %></td>
           <% end %>
           
         <% end %>
