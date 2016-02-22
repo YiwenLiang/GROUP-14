@@ -1,4 +1,5 @@
-<h1>Welcome Admin these are the users</h1>
+<h1>Welcome <%= session[:user_username] %> these are the users currently in our database</h1>
+
 
 <% if notice%>
 <p id = "notice"><%= notice%></p>
@@ -19,16 +20,22 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <% if user.username == "admin"%>
-        
-        <% else %>
+        <% if user.username != "admin"%>
+          <% if user.username == session[:user_username] %>
+          <td><font color = "green">*<%= user.username %></font></td>
+          <% else%>
+          <td><%= user.username %></td>
+          <% end %>
         <td><%= user.username %></td>
         <td><%= user.firstname %></td>
         <td><%= user.lastname %></td>
         <td><%= user.email %></td>
-        <td><%= user.admin %> </td>
+        <td><%= user.admin_type %> </td>
+          <% if user.id != session[:user_id] %>
         <td><%= link_to 'Edit', edit_admin_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete %></td>
+          <% end %>
+          
         <% end %>
       </tr>
     <% end %>

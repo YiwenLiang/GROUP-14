@@ -4,14 +4,21 @@ Rails.application.routes.draw do
   get 'sessions/create'
   get 'sessions/destroy'
 
-  resources :users
+  resources :users do
+  resources :admin
+  resources :sessions
+  end
   
-  
+
+
   get 'admin' => 'admin#index'
   get 'logout' => 'sessions#destroy'
 
   resources :admin do
   resources :users
+  resources :sessions
+  
+ 
   end
 
   controller :sessions do

@@ -5,6 +5,6 @@
 
 
 <% @current_user ||= User.find_by(id: session[:user_id]) %> <!-- This line gets the user's ID**Needed for EDIT**-->
-<%= link_to 'Edit Your Profile', edit_user_url(@current_user.id) %>
 
+<%= link_to 'Edit Your Profile', edit_user_url(@current_user.id) %>
 <%= link_to 'Sign Out', login_url %>
