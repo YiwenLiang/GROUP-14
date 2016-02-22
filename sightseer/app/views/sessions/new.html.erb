@@ -10,9 +10,7 @@
 <h3 id = "message"> &nbsp&nbsp&nbsp&nbspMake memories that will last Forever</h3>
 <div>
   
-<% if flash[:alert] %>
-<p id="notice"><%= flash[:alert] %> </p>
-<% end %>
+
 <%= form_tag do %>
 <fieldset id = "field">
   <div>
@@ -25,6 +23,10 @@
   <div>
     <%= submit_tag "Login", class: "login" %>
   </div>
+  
+  <% if flash[:alert] %>
+  <p id="notice"><%= flash[:alert] %> </p>
+  <% end %>
 </fieldset>
 <% end %>
 </div>

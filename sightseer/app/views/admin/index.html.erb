@@ -1,3 +1,8 @@
+<% if $isadmin != true %>
+  <td><h3>How did you find yourself here?</h3></td>
+  <%= link_to 'Back', index_url %>
+<% else %>
+
 <h1>Welcome <%= session[:user_username] %> these are the users currently in our database</h1>
 
 
@@ -26,7 +31,7 @@
           <% else%>
           <td><%= user.username %></td>
           <% end %>
-        <td><%= user.username %></td>
+
         <td><%= user.firstname %></td>
         <td><%= user.lastname %></td>
         <td><%= user.email %></td>
@@ -45,3 +50,5 @@
 <br>
 
 <%= link_to 'Sign Out', login_url %>
+
+<% end %>
