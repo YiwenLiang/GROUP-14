@@ -1,17 +1,16 @@
-<h1>New User</h1>
+<div id= "normalTitle"> New User Registration</div>
 
 <body id = "newPage">
 
 <div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
+<%= link_to 'Login', login_path, class: "loginLink" %>
 </div>
 
 <div id = "secondBorder"></div>
 <%= image_tag("8.jpg", class: "picture8") %>
 <%= image_tag("7.jpg", class: "picture7") %>
 <%= image_tag("9.jpg", class: "picture9") %>
-<%= image_tag("5.jpg", class: "picture5") %>
-<%= image_tag("4.jpg", class: "picture4") %>
-<%= image_tag("2.jpg", class: "picture2") %>
+
 
 <p id ="newText">Take the first step towards your adventure by simply signing up!</p>
 
@@ -31,9 +30,7 @@
       </ul>
     </div>
   <% end %>
-
 <div id = "inputPart">
-  
   <div class="field">
     <%= f.label :username, class: "name" %><br>
     <%= f.text_field :username, class: "nameField" %>
@@ -58,12 +55,12 @@
   
   
   <div class="field">
-    <%= f.label :password, class: "password"%><br>
-    <%= f.password_field :password, class: "passwordField" %>
+    <%= f.label :password, class: "name"%><br>
+    <%= f.password_field :password, class: "nameField" %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation, class: "confirmation" %><br>
-    <%= f.password_field :password_confirmation, class: "confirmationField" %>
+    <%= f.label :password_confirmation, class: "name" %><br>
+    <%= f.password_field :password_confirmation, class: "nameField" %>
   </div>
   
 
@@ -71,7 +68,10 @@
     <%= f.submit class: "createButton" %>
   </div>
 <% end %>
+<%= image_tag("5.jpg", class: "picture5") %>
+<%= image_tag("4.jpg", class: "picture4") %>
+<%= image_tag("2.jpg", class: "picture2") %>
 
 </div>
 
-<%= link_to 'Back', login_path, class: "newBack" %>
+

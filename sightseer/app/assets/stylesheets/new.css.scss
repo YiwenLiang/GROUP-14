@@ -56,7 +56,6 @@
 .picture2{
     width:600px;
     height:400px;
-    
     position:relative;
     top:40px;
     left:130px;
@@ -65,12 +64,14 @@
 
 /** LOGIN PORTION **/
 
+
+
 .name{
     position:relative;
-    left:300px;
-    top:275px;
-    
-    color: #00CC66;
+    left:1200px;
+    top:30px;
+
+    color: black;
     font-family:courier new, courier, monospace;
     font-weight:bold;
     
@@ -79,80 +80,27 @@
 
 .nameField{
     position:relative;
-    left:650px;
-    top:250px;
+    left:850px;
+    top:0px;
     
-    width:800px;
+    width:300px;
     height:30px;
     
     font-size:150%;
     
 }
-
-.password{
-    position:relative;
-    left:300px;
-    top:300px;
-    
-    color: #00CC66;
-    font-family:courier new, courier, monospace;
-    font-weight:bold;
-    
-    font-size:150%;
-    
-}
-
-.passwordField{
-    position:relative;
-    left:650px;
-    top:275px;
-    
-    width:800px;
-    height:30px;
-    
-    font-size:150%;
-}
-
-.confirmation{
-    position:relative;
-    left:300px;
-    top:325px;
-    
-    color: #00CC66;
-    font-family:courier new, courier, monospace;
-    font-weight:bold;
-    
-    font-size:150%;
-    
-}
-
-.confirmationField{
-    position:relative;
-    left:650px;
-    top:300px;
-    
-    width:800px;
-    height:30px;
-    
-    font-size:150%;
-}
-
 
 /** BUTTONS **/
 
 .createButton{
     width:150px;
     height:50px;
-    
     position:relative;
-    top:450px;
-    left:925px;
-    font-size:110%;
-    
-    
+    top:15px;
+    left:850px;
+    font-size:120%;
     background-color:#00CC66;
-    
-    color:white;
+    color:black;
     font-weight:bold;
     font-variant:small-caps;
     letter-spacing:0pt;
@@ -162,32 +110,7 @@
     line-height:1;
 }
 
-.newBack{
-    border-style:none;
-    
-    width:200px;
-    height:50px;
 
-    padding:10px;
-    
-    position:relative;
-    top:425px;
-    left:1080px;
-    
-    font-size:110%;
-    
-    
-    
-    color:#00CC66;
-    font-weight:bold;
-    font-variant:small-caps;
-    letter-spacing:0pt;
-    word-spacing:-2pt;
-    text-align:left;
-    font-family:arial black, sans-serif;
-    line-height:1;
-    
-}
 
 /** PRE REGISTRATION TEXT **/
 
@@ -195,7 +118,6 @@
     position:relative;
     top:30px;
     left:475px;
-    
     font-size:30px;
     font-family:arial black,sans-serif;
 }
@@ -204,14 +126,13 @@
     position:relative;
     top:30px;
     left:750px;
-    
     color:white;
 }
 
 #newLogin{
     position:relative;
-    top:75px;
-    left:900px;
-    
-    font-size:300%;
+    top:0px;
+    left:850px;
+    font-size:400%;
+
 }

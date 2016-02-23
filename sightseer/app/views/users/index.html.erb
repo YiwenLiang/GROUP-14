@@ -1,6 +1,10 @@
+<% @current_user ||= User.find_by(id: session[:user_id]) %> <!-- This line gets the user's ID**Needed for EDIT**-->
 <body id = "adminEdit">
-
+<div id= "pageTitle"> Welcome! </div>
 <div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
+<%= link_to 'New User', new_user_url, class: "newUserLink" %>
+<%= link_to 'Edit User', edit_user_url(@current_user.id), class: "editLink" %>
+<%= link_to 'Sign Out', login_url, class: "loginLink" %>
 </div>
 
 <div id = "secondBorder"></div>
@@ -16,8 +20,7 @@
 
 
 
-<% @current_user ||= User.find_by(id: session[:user_id]) %> <!-- This line gets the user's ID**Needed for EDIT**-->
 
-<%= link_to 'Edit Your Profile', edit_user_url(@current_user.id) %>
-<%= link_to 'Sign Out', login_url %>
+
+
 </div>

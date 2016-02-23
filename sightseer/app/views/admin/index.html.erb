@@ -1,7 +1,15 @@
+<% @current_user ||= User.find_by(id: session[:user_id]) %> <!-- This line gets the user's ID**Needed for EDIT**-->
+
 
 <body id = "adminPage">
+  
 <div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
+<div id= "normalTitle"> Database Details </div>
+<%= link_to 'New User', new_user_url, class: "newUserLink" %>
+<%= link_to 'Edit User', edit_user_url(@current_user.id), class: "editLink" %>
+<%= link_to 'Sign Out', login_url, class: "loginLink" %>
 </div>
+
 
 <div id = "secondBorder"></div>
 
@@ -14,8 +22,6 @@
   <% else %>
 <h1>Welcome <font color = "red"><%= session[:user_username] %></font> these are the users currently in our database</h1>
 
-
-
 <% if notice%>
 <p id = "notice"><%= notice%></p>
 <% end%>
@@ -23,12 +29,11 @@
 <table>
   <thead>
     <tr>
-      <td><h3>User Name &nbsp&nbsp&nbsp&nbsp</h3></td>
+      <td><h3>User Name &nbsp&nbsp&nbsp&nbsp&nbsp</h3></td>
       <td><h3>First Name &nbsp&nbsp&nbsp&nbsp</h3></td>
       <td><h3>Last Name &nbsp&nbsp&nbsp&nbsp</h3></td>
       <td><h3>Email &nbsp&nbsp&nbsp&nbsp</h3></td>
       <td><h3>Is Admin &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h3></td>
-
     </tr>
   </thead>
 
@@ -61,7 +66,6 @@
 
 <br>
 
-<%= link_to 'Sign Out', login_url %>
 
 <% end %>
 
