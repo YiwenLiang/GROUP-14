@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :admin
   resources :sessions
   end
-  
+
 
 
   get 'admin' => 'admin#index'
@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   resources :admin do
   resources :users
   resources :sessions
-  
- 
+
+
   end
 
   controller :sessions do
@@ -26,7 +26,9 @@ Rails.application.routes.draw do
     post 'login' => :create
     delete 'logout' => :destroy
   end
- 
+
   root 'sessions#create', as: 'index'
+
+  get 'map/index'
 
 end
