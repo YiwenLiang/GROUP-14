@@ -34,21 +34,21 @@
       <b>Start:</b>
       <input type="text" id="start" value="White Rock, BC">
       <br>
-      <b id="waypointsHeader">Waypoints:</b>
-      <select multiple size="12" id="waypoints">
-        <option value="Stanley park, BC">Stanley Park</option>
-        <option value="Science World Vancouver">Science World</option>
-        <option value="SFU, BC">Simon Fraser University, Burnaby Mountain Campus</option>
-        <option value="SFU surrey, BC">Simon Fraser University, Surrey Campus</option>
-        <option value="Vancouver Aquarium">Vancouver Aquarium</option>
-        <option value="Vancouver Convention Centre">Vancouver Convention Centre</option>
-        <option value="Capilano Suspension Bridge">Capilano Suspension Bridge</option>
-        <option value="777 Pacific Blvd Vancouver, BC">BC Place</option>
-        <option value="750 Hornby St Vancouver, BC">Vancouver Art Gallery</option>
-        <option value="Granville Island">Granville Island</option>
-        <option value="8811 River Rd, Richmond, BC">River Rock Casino</option>
-        <option value="YVR">Vancouver International Airport</option>
-      </select>
+      <div id="waypointsBox">
+        <p><b id="waypointsHeader">Waypoints:</b></p>
+        <input type="checkbox" name="waypoint" value="Stanley park, BC">Stanley Park<br>
+        <input type="checkbox" name="waypoint" value="Science World Vancouver">Science World<br>
+        <input type="checkbox" name="waypoint" value="SFU, BC">Simon Fraser University, Burnaby Mountain Campus<br>
+        <input type="checkbox" name="waypoint" value="SFU surrey, BC">Simon Fraser University, Surrey Campus<br>
+        <input type="checkbox" name="waypoint" value="Vancouver Aquarium">Vancouver Aquarium<br>
+        <input type="checkbox" name="waypoint" value="Vancouver Convention Centre">Vancouver Convention Centre<br>
+        <input type="checkbox" name="waypoint" value="Capilano Suspension Bridge">Capilano Suspension Bridge<br>
+        <input type="checkbox" name="waypoint" value="777 Pacific Blvd Vancouver, BC">BC Place<br>
+        <input type="checkbox" name="waypoint" value="750 Hornby St Vancouver, BC">Vancouver Art Gallery<br>
+        <input type="checkbox" name="waypoint" value="Granville Island">Granville Island<br>
+        <input type="checkbox" name="waypoint" value="8811 River Rd, Richmond, BC">River Rock Casino<br>
+        <input type="checkbox" name="waypoint" value="YVR">Vancouver International Airport<br>
+      </div>
       <br>
       <b>End:</b>
       <input type="text" id="end" value="SFU, BC">
@@ -62,11 +62,9 @@
       //waypoints are hidden from user when public transit is selected
       var hideWaypts = function() {
         if (document.getElementById('travelMode').value == "TRANSIT") {
-          document.getElementById('waypoints').style.display = 'none';
-          document.getElementById('waypointsHeader').style.display = 'none';
+          document.getElementById('waypointsBox').style.display = 'none';
         } else {
-          document.getElementById('waypoints').style.display = 'initial';
-          document.getElementById('waypointsHeader').style.display = 'initial';
+          document.getElementById('waypointsBox').style.display = 'initial';
         }
       }
       document.getElementById('travelMode').addEventListener('change', hideWaypts);
@@ -92,13 +90,13 @@
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
         var waypts = []; //will collect the chosed waypoints
-        var wayptsAll = document.getElementById('waypoints');
+        var wayptsAll = document.getElementsByName('waypoint');
 
         //Waypoints are disabled if user is using public transit
         //Adds selected waypoints to waypts
         if (document.getElementById('travelMode').value !== "TRANSIT") {
           for (var i = 0; i < wayptsAll.length; i++) {
-            if (wayptsAll.options[i].selected) {
+            if (wayptsAll[i].checked) {
               waypts.push({
                 location: wayptsAll[i].value,
                 stopover: true
