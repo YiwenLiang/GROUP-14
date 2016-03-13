@@ -13,7 +13,7 @@
       #map {
         height: 100%;
         float: left;
-        width: 80%;
+        width: 60%;
 
       }
       #panel {
@@ -25,9 +25,33 @@
   <body>
     <div id="map"></div>
     <div id="panel">
-      <input type="text" id="start" value="vancouver, bc">
+      <b>Mode of Transportation</b>
+      <select id="travelMode">
+        <option value="DRIVING">Driving</option>
+        <option value="TRANSIT">Public Transit</option>
+        <option value="WALKING">On Foot</option>
+      </select>
+      <b>Start:</b>
+      <input type="text" id="start" value="White Rock, BC">
       <br>
-      <input type="text" id="end" value="calgary, ab">
+      <b id="waypointsHeader">Waypoints:</b>
+      <select multiple size="12" id="waypoints">
+        <option value="Stanley park, BC">Stanley Park</option>
+        <option value="Science World Vancouver">Science World</option>
+        <option value="SFU, BC">Simon Fraser University, Burnaby Mountain Campus</option>
+        <option value="SFU surrey, BC">Simon Fraser University, Surrey Campus</option>
+        <option value="Vancouver Aquarium">Vancouver Aquarium</option>
+        <option value="Vancouver Convention Centre">Vancouver Convention Centre</option>
+        <option value="Capilano Suspension Bridge">Capilano Suspension Bridge</option>
+        <option value="777 Pacific Blvd Vancouver, BC">BC Place</option>
+        <option value="750 Hornby St Vancouver, BC">Vancouver Art Gallery</option>
+        <option value="Granville Island">Granville Island</option>
+        <option value="8811 River Rd, Richmond, BC">River Rock Casino</option>
+        <option value="YVR">Vancouver International Airport</option>
+      </select>
+      <br>
+      <b>End:</b>
+      <input type="text" id="end" value="SFU, BC">
       <br>
       <input type="submit" id="submit">
       <p id="errorBox"></p>
@@ -35,14 +59,25 @@
     <script>
       var map;
 
+      //waypoints are hidden from user when public transit is selected
+      var hideWaypts = function() {
+        if (document.getElementById('travelMode').value == "TRANSIT") {
+          document.getElementById('waypoints').style.display = 'none';
+          document.getElementById('waypointsHeader').style.display = 'none';
+        } else {
+          document.getElementById('waypoints').style.display = 'initial';
+          document.getElementById('waypointsHeader').style.display = 'initial';
+        }
+      }
+      document.getElementById('travelMode').addEventListener('change', hideWaypts);
+
+
       function initMap() {
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
-        var sfu = new google.maps.LatLng(49.278947,-122.916525);
-        var downtown = new google.maps.LatLng(49.284220,-123.117478);
 
         map = new google.maps.Map(document.getElementById('map'), {
-          center: sfu,
+          center: {lat: 49.278947, lng: -122.916525},
           zoom: 14
         });
         directionsDisplay.setMap(map);
@@ -55,13 +90,33 @@
       }
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+
+        var waypts = []; //will collect the chosed waypoints
+        var wayptsAll = document.getElementById('waypoints');
+
+        //Waypoints are disabled if user is using public transit
+        //Adds selected waypoints to waypts
+        if (document.getElementById('travelMode').value !== "TRANSIT") {
+          for (var i = 0; i < wayptsAll.length; i++) {
+            if (wayptsAll.options[i].selected) {
+              waypts.push({
+                location: wayptsAll[i].value,
+                stopover: true
+              });
+            }
+          }
+        }
+
+
         directionsService.route({
           origin: document.getElementById("start").value,
           destination: document.getElementById("end").value,
-          travelMode: google.maps.TravelMode.DRIVING
+          waypoints: waypts,
+          optimizeWaypoints: true,
+          travelMode: google.maps.TravelMode[document.getElementById("travelMode").value]
         },
         function(response, status) {
-          if (status == google.maps.DirectionsStatus.OK) {
+          if (status === google.maps.DirectionsStatus.OK) {
             document.getElementById('errorBox').innerHTML = '';
             directionsDisplay.setDirections(response);
           } else {
