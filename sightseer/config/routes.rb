@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   root 'sessions#create', as: 'index'
 
+  get 'map' => 'map#index'
   get 'map/index'
 
 end
