@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  get 'welcome/homepage'
+    root 'welcome#homepage'
+  
   get 'sessions/create'
   get 'sessions/destroy'
 
@@ -9,7 +12,6 @@ Rails.application.routes.draw do
   resources :sessions
   end
   
-
 
   get 'admin' => 'admin#index'
   get 'logout' => 'sessions#destroy'
@@ -27,6 +29,5 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
  
-  root 'sessions#create', as: 'index'
 
 end

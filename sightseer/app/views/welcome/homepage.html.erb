@@ -1,26 +1,13 @@
-<% @current_user ||= User.find_by(id: session[:user_id]) %> <!-- This line gets the user's ID**Needed for EDIT**-->
-<body>
-
-<%# THIS IS THE TOP BORDER %>
-<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
-<%= link_to 'New User', new_user_url, class: "newUserLink" %>
-<%= link_to '|Edit User', edit_user_url(@current_user.id), class: "editLink" %>
-<%= link_to '|Sign Out', login_url, class: "loginLink" %>
-<h1 style= "position:fixed; left:275px; color:white"> Welcome <%= session[:user_username] %>, To SightSeers!</h1>
-<% if notice%>
-<p id = "notice"><%= notice%></p>
-<% end %>
-</div>
-
-<div id = "secondBorder"></div>
-
-
-  
 <!DOCTYPE html>
 <html class = "test1" lang="en">
 
 <head>
     
+<%# THIS IS THE TOP BORDER %>
+<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
+<%= link_to 'Login', login_path, class: "loginLink" %>
+<%= link_to 'New User', new_user_url, class: "newUserLink" %>
+</div>
 
 <div id = "secondBorder"></div>
 </head>
@@ -66,6 +53,7 @@
             <span class="icon-next"></span>
         </a>
     </header>
+<div></div>
 <%# SLIDE SHOW END %>
 
 <p id = "newLine">______________________________________________________________</p>
@@ -94,10 +82,10 @@
 </a>
 
 
+
+
+
+
 </div>
 </body>
 </html>
-
-
-
-</div>
