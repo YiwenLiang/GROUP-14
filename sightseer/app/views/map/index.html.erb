@@ -3,59 +3,51 @@
   <head>
     <title>Map</title>
     <meta charset="utf-8">
-    <%= javascript_include_tag "application" %>
     <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-        float: left;
-        width: 60%;
 
-      }
-      #panel {
-        padding: 20px;
-        float: left;
-      }
+
     </style>
   </head>
   <body>
     <div id="map"></div>
     <div id="panel">
-      <p><b>Mode of Transportation</b></p>
-      <select id="travelMode">
-        <option value="DRIVING">Driving</option>
-        <option value="TRANSIT">Public Transit</option>
-        <option value="WALKING">On Foot</option>
-      </select>
-      <p><b>Start:</b></p>
-      <input type="text" id="start" value="Chilliwack, BC">
-      <br>
-      <div id="waypointsBox">
-        <p><b>Waypoints:</b></p>
-        <input type="checkbox" name="waypoint" value="777 Pacific Blvd Vancouver, BC">BC Place<br>
-        <input type="checkbox" name="waypoint" value="Capilano Suspension Bridge">Capilano Suspension Bridge<br>
-        <input type="checkbox" name="waypoint" value="Granville Island">Granville Island<br>
-        <input type="checkbox" name="waypoint" value="Grouse Mountain">Grouse Mountain<br>
-        <input type="checkbox" name="waypoint" value="8811 River Rd, Richmond, BC">River Rock Casino<br>
-        <input type="checkbox" name="waypoint" value="Stanley park, BC">Stanley Park<br>
-        <input type="checkbox" name="waypoint" value="Science World Vancouver">Science World<br>
-        <input type="checkbox" name="waypoint" value="SFU, BC">Simon Fraser University, Burnaby Mountain Campus<br>
-        <input type="checkbox" name="waypoint" value="SFU surrey, BC">Simon Fraser University, Surrey Campus<br>
-        <input type="checkbox" name="waypoint" value="Vancouver Aquarium">Vancouver Aquarium<br>
-        <input type="checkbox" name="waypoint" value="750 Hornby St Vancouver, BC">Vancouver Art Gallery<br>
-        <input type="checkbox" name="waypoint" value="Vancouver Convention Centre">Vancouver Convention Centre<br>
-        <input type="checkbox" name="waypoint" value="YVR">Vancouver International Airport<br>
+      <div id="titlebox">
+        <p id="title">SIGHTSEER</p>
+        <p id="subtitle">route planner</p>
       </div>
-      <br>
-      <p><b>End:</b></p>
-      <input type="text" id="end" value="SFU, BC">
-      <br>
-      <p><input type="submit" id="submit"></p>
-      <p id="errorBox"></p>
+      <div id="infobox">
+        <p><b>Mode of Transportation</b></p>
+        <select id="travelMode">
+          <option value="DRIVING">Driving</option>
+          <option value="TRANSIT">Public Transit</option>
+          <option value="WALKING">On Foot</option>
+        </select>
+        <p><b>Start:</b></p>
+        <input type="text" id="start" value="Chilliwack, BC">
+        <br>
+        <div id="waypointsBox">
+          <p><b>Waypoints:</b></p>
+          <input type="checkbox" name="waypoint" value="777 Pacific Blvd Vancouver, BC">BC Place<br>
+          <input type="checkbox" name="waypoint" value="Capilano Suspension Bridge">Capilano Suspension Bridge<br>
+          <input type="checkbox" name="waypoint" value="Granville Island">Granville Island<br>
+          <input type="checkbox" name="waypoint" value="Grouse Mountain">Grouse Mountain<br>
+          <input type="checkbox" name="waypoint" value="8811 River Rd, Richmond, BC">River Rock Casino<br>
+          <input type="checkbox" name="waypoint" value="Stanley park, BC">Stanley Park<br>
+          <input type="checkbox" name="waypoint" value="Science World Vancouver">Science World<br>
+          <input type="checkbox" name="waypoint" value="SFU, BC">Simon Fraser University, Burnaby Mountain Campus<br>
+          <input type="checkbox" name="waypoint" value="SFU surrey, BC">Simon Fraser University, Surrey Campus<br>
+          <input type="checkbox" name="waypoint" value="Vancouver Aquarium">Vancouver Aquarium<br>
+          <input type="checkbox" name="waypoint" value="750 Hornby St Vancouver, BC">Vancouver Art Gallery<br>
+          <input type="checkbox" name="waypoint" value="Vancouver Convention Centre">Vancouver Convention Centre<br>
+          <input type="checkbox" name="waypoint" value="YVR">Vancouver International Airport<br>
+        </div>
+        <br>
+        <p><b>End:</b></p>
+        <input type="text" id="end" value="SFU, BC">
+        <br>
+        <p><input type="submit" id="submit"></p>
+        <p id="errorBox"></p>
+      </div>
     </div>
     <script>
       var map;
