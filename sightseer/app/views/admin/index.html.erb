@@ -1,0 +1,73 @@
+<% @current_user ||= User.find_by(id: session[:user_id]) %> <!-- This line gets the user's ID**Needed for EDIT**-->
+
+
+<body id = "adminPage">
+  
+<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
+<div id= "normalTitle"> Database Details </div>
+<%= link_to 'New User', new_user_url, class: "newUserLink" %>
+<%= link_to 'Edit User', edit_user_url(@current_user.id), class: "editLink" %>
+<%= link_to 'Sign Out', login_url, class: "loginLink" %>
+</div>
+
+
+<div id = "secondBorder"></div>
+
+<div id = "wholepage">
+  
+  
+  <% if $isadmin != true %>
+  <td><h2>How did you find yourself here?</h2></td>
+  <%= link_to 'Back', index_url %>
+  <% else %>
+<h1>Welcome <font color = "red"><%= session[:user_username] %></font> these are the users currently in our database</h1>
+
+<% if notice%>
+<p id = "notice"><%= notice%></p>
+<% end%>
+
+<table>
+  <thead>
+    <tr>
+      <td><h3>User Name &nbsp&nbsp&nbsp&nbsp&nbsp</h3></td>
+      <td><h3>First Name &nbsp&nbsp&nbsp&nbsp</h3></td>
+      <td><h3>Last Name &nbsp&nbsp&nbsp&nbsp</h3></td>
+      <td><h3>Email &nbsp&nbsp&nbsp&nbsp</h3></td>
+      <td><h3>Is Admin &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h3></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <% if user.username != "admin"%>
+          <% if user.username == session[:user_username] %>
+          <td><font color = "red">*<%= user.username %></font></td>
+          <% else%>
+          <td><%= user.username %></td>
+          <% end %>
+
+        <td><%= user.firstname %></td>
+        <td><%= user.lastname %></td>
+        <td><%= user.email %></td>
+        <td><%= user.admin_type %> </td>
+          <% if user.id != session[:user_id] %>
+        <td><%= link_to 'Edit', edit_admin_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete %></td>
+          <%else%>
+        <td><%= link_to 'Edit Your Profile', edit_user_url(user.id) %></td>
+          <% end %>
+          
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<% end %>
+
+</div>
+</body>

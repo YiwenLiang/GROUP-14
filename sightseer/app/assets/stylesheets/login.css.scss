@@ -1,0 +1,177 @@
+#loginPage,#adminPage,#adminEdit{
+    background-color: #0066CC;
+    background-image: url("Line.png");
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+    background-position: bottom; 
+    background-size: 1000px 300px;
+    z-index:4;
+
+}
+
+#welcome{
+  color:white;
+  font-weight:bold;
+  font-size:50px;
+  
+  position:fixed;
+  left:625px;
+  top:200px;
+  
+}
+
+#message{
+    color:#FAF0E6;
+    font-weight:bold;
+    font-size:130%;
+    
+    position:fixed;
+    top:350px;
+    left:700px;
+}
+
+#field{
+  border-style:none;
+  
+  position:fixed;
+  top:400px;
+  left:625px;
+}
+
+#logText{
+  font-size:50px;
+}
+
+
+/** LOGIN SECTION **/
+.new{
+    position:fixed;
+    left:640px;
+    top:475px;
+    
+    font-size:130%;
+    font-variant:small-caps;
+    font-weight:bold;
+    
+    color:white;
+}
+
+.newB{
+    width:200px;
+    height:50px;
+    
+    font-size:150%;
+    
+    border-radius:10px;
+    
+    position:fixed;
+    top:500px;
+}
+
+.pass{
+    position:fixed;
+    left:900px;
+    top:475px;
+    
+    font-size:130%;
+    font-variant:small-caps;
+    font-weight:bold;
+    
+    color:white;
+    
+}
+
+.passB{
+    width:200px;
+    height:50px;
+    
+    font-size:150%;
+    
+    border-radius:10px;
+    
+    position:fixed;
+    top:500px;
+    left:900px;
+}
+
+.login{
+    position:fixed;
+    top:600px;
+    
+    height:50px;
+    width:468px;
+    
+    border-radius:10px;
+    
+    background-color:#00CC66;
+    
+    font-size:200%;
+    color:white;
+    
+}
+
+.signUp{
+    border:solid;
+    border-radius:10px;
+    border-color:white;
+    padding:10px;
+    
+    background-color:#00CC66;
+    
+    height:20px;
+    
+    position:fixed;
+    right:0;
+    top:10px;
+    
+    color:white;
+    font-weight:bold;
+    text-decoration:overline;
+    font-variant:small-caps;
+    letter-spacing:0pt;
+    word-spacing:-2pt;
+    text-align:left;
+    font-family:arial black, sans-serif;
+    line-height:1;
+}
+
+/** TOPBORDERS **/
+
+#topBorder{
+    border-style: solid;
+    border-color:#1a1a1a;
+    background-color:#1a1a1a;
+    
+    width:100%;
+    height:75px;
+    position:fixed;
+    top:0;
+    left:0;
+    
+    z-index:4;
+    
+}
+
+#title{
+    padding-left:20px;
+    
+    position:fixed;
+    top:-15px;
+    z-index:4;
+}
+
+#secondBorder{
+    border-style: solid;
+    border-color:#708090;
+    background-color:#708090;
+    
+    width:100%;
+    height:30px;
+    
+    position:fixed;
+    left:0;
+    top:75px;
+    
+    z-index:4; 
+}
+

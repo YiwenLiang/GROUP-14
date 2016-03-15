@@ -1,0 +1,40 @@
+<div id= "normalTitle"> Home Page </div>
+<body id = "loginPage">
+
+<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
+<%= link_to 'New User', new_user_url, class: "newUserLink" %>
+</div>
+
+<div id = "secondBorder"></div>
+
+<h1 id = "welcome">Welcome to Sightseer,<br> &nbsp&nbsp&nbsp&nbsp the Perfect trip planner</h1>
+<h3 id = "message"> &nbsp&nbsp&nbsp&nbspMake memories that will last Forever</h3>
+<div>
+  
+
+<%= form_tag do %>
+<fieldset id = "field">
+  <div>
+  <%= label_tag :username, 'Username', class: "new" %>
+  <%= text_field_tag :username, params[:username], class: "newB" %>
+
+  <%= label_tag :password, 'Password', class: "pass" %>
+  <%= password_field_tag :password, params[:password], class: "passB" %>
+  </div>
+  <div>
+    <%= submit_tag "Login", class: "login" %>
+  <% if flash[:alert] %>
+  <p id="notice"><%= flash[:alert] %> </p>
+  <% end %>
+  </div>
+  
+
+</fieldset>
+<% end %>
+
+
+</div>
+
+
+
+</body>
