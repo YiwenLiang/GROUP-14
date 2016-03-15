@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
 
+  get 'welcome/homepage'
+
+  get 'welcome/homepage'
+    root 'welcome#homepage'
+
   get 'sessions/create'
   get 'sessions/destroy'
 
@@ -27,7 +32,7 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
-  root 'sessions#create', as: 'index'
+  #root 'sessions#create', as: 'index'
 
   get 'map' => 'map#index'
   get 'map/index'

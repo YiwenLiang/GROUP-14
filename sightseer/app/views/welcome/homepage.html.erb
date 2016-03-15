@@ -1,30 +1,13 @@
-
-<% @current_user ||= User.find_by(id: session[:user_id]) %> <!-- This line gets the user's ID**Needed for EDIT**-->
-<%# THIS IS THE TOP BORDER %>
-<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
-<%= link_to 'New User', new_user_url, class: "newUserLink" %>
-<%= link_to '|Edit User', edit_user_url(@current_user.id), class: "editLink" %>
-<%= link_to '|Sign Out', login_url, class: "loginLink" %>
-<h1 style= "position:fixed; left:275px; top:10px; color:white"> Welcome <%= session[:user_username] %>, To SightSeers!</h1>
-<% if notice%>
-<p id = "notice"><%= notice%></p>
-<% end %>
-</div>
-
-<div id = "secondBorder"></div>
-   
-   
-   
-   <head>
-    <title>Place Autocomplete Attractions Search</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-  </head>
-    
-  <html class = "test1" lang="en">
+<!DOCTYPE html>
+<html class = "test1" lang="en">
 
 <head>
     
+<%# THIS IS THE TOP BORDER %>
+<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
+<%= link_to 'Login', login_path, class: "loginLink" %>
+<%= link_to 'New User', new_user_url, class: "newUserLink" %>
+</div>
 
 <div id = "secondBorder"></div>
 </head>
@@ -70,6 +53,7 @@
             <span class="icon-next"></span>
         </a>
     </header>
+<div></div>
 <%# SLIDE SHOW END %>
 
 <p id = "newLine">______________________________________________________________</p>
@@ -97,63 +81,6 @@
 <img id = "pictures" src="assets/choices/island.jpg" alt ="Granville Island">
 </a>
 
-
 </div>
-  
-    <%#START OF MAP PORTION %>
-    <%= link_to 'Go to Route Planner', map_path, class:"plannarRoute" %>
-    <div id="locationField" style="position:relative; top:200px; left:25%; width:15%; height:50px;">
-      <input id="autocomplete" placeholder="Enter a city" type="text" style="height:50px; font-size:150%;" />
-    </div>
-
-    <div id="controls" style="position:relative; top:150px; left:45%; width:15%;">
-      <select id="country">
-        <option value="ca" selected>None</option>
-        <option value="all">All</option>
-        <option value="ca">Canada</option>
-      </select>
-    </div>
-    
-    <div id = "mapContainer">
-    <div id="map" style="height: 100%; color:black; width: 100%;"></div>
-    </div>
-    
-    
-    <div id="listing" style="position:relative; left:87%; top:-665px">
-      <table id="resultsTable">
-        <tbody id="results"></tbody>
-      </table>
-    </div>
-
-    <div style="display: none">
-      <div id="info-content">
-        <table>
-          <tr id="iw-url-row" class="iw_table_row">
-            <td id="iw-icon" class="iw_table_icon"></td>
-            <td id="iw-url"></td>
-          </tr>
-          <tr id="iw-address-row" class="iw_table_row">
-            <td class="iw_attribute_name">Address:</td>
-            <td id="iw-address"></td>
-          </tr>
-          <tr id="iw-phone-row" class="iw_table_row">
-            <td class="iw_attribute_name">Telephone:</td>
-            <td id="iw-phone"></td>
-          </tr>
-          <tr id="iw-rating-row" class="iw_table_row">
-            <td class="iw_attribute_name">Rating:</td>
-            <td id="iw-rating"></td>
-          </tr>
-          <tr id="iw-website-row" class="iw_table_row">
-            <td class="iw_attribute_name">Website:</td>
-            <td id="iw-website"></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaU5DbGvX_-OOZwj-az4zT4iC6gp8MmQQ&libraries=places&callback=initMap"async defer></script>    
-    <script src="assets/home.js"></script>
-
 </body>
 </html>
