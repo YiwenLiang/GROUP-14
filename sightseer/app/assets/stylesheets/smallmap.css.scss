@@ -1,0 +1,105 @@
+#mapContainer {
+    border: 3px solid black;
+    
+    margin: auto;
+    padding: 50px;
+    height: 80%;
+    width: 70%;
+    background-color:white;
+    
+    position:relative;
+    top:200px;
+}
+
+table {
+    font-size: 12px;
+    color: black;
+}
+
+#listing {
+    position: relative;
+    width: 200px;
+    height: 70%;
+    overflow: auto;
+    left: 60%;
+    top: 60px;
+    cursor: pointer;
+    overflow-x: hidden;
+    color: black;
+}
+
+#locationField {
+    position: relative;
+    width: 190px;
+    height: 20px;
+    left: 0px;
+    top: 40px;
+    z-index: 5;
+    background-color: #fff;
+    color: black;
+}
+
+#controls {
+    position: relative;
+    left: 190px;
+    width: 140px;
+    top: 40px;
+    z-index: 5;
+    background-color: #fff;
+    color: black;
+}
+
+#autocomplete {
+    width: 100%;
+}
+
+#country {
+    width: 100%;
+}
+
+.placeIcon {
+    width: 20px;
+    height: 34px;
+    margin: 4px;
+    color: black;
+}
+
+.hotelIcon {
+    width: 24px;
+    height: 24px;
+    color: black;
+}
+
+#resultsTable {
+    border-collapse: collapse;
+    width: 240px;
+    color: black;
+}
+
+#rating {
+    font-size: 13px;
+    font-family: Arial Unicode MS;
+    color: black;
+}
+
+.iw_table_row {
+    height: 18px;
+    color: black;
+}
+
+.iw_attribute_name {
+    font-weight: bold;
+    text-align: right;
+    color: black;
+}
+
+.iw_table_icon {
+    text-align: right;
+    color: black;
+}
+
+.plannarRoute {
+    position: relative;
+    top:250px;
+    color: black;
+}
