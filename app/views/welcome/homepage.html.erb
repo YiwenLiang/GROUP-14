@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class = "test1" lang="en">
+
+<head>
+    
+<%# THIS IS THE TOP BORDER %>
+<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
+<%= link_to 'Login', login_path, class: "loginLink" %>
+<%= link_to 'New User', new_user_url, class: "newUserLink" %>
+</div>
+
+<div id = "secondBorder"></div>
+</head>
+<body class = "test2">
+    <!-- Full Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <div class="fill" style="background-image:url(/assets/slide1.jpg);"></div>
+                <div class="carousel-caption">
+                    <h2>Nightly Scenery</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="fill" style="background-image:url(/assets/slide2.jpg);"></div>
+                <div class="carousel-caption">
+                    <h2>Vancouver</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url(/assets/slide3.jpg);"></div>
+                <div class="carousel-caption">
+                    <h2>SO MUCH TO SEE AND DO</h2>
+                </div>
+            </div>
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </header>
+<div></div>
+<%# SLIDE SHOW END %>
+
+<p id = "newLine">______________________________________________________________</p>
+
+<div id = "pictureLinks">
+
+<h2 style="text-align:center; position:relative; top:30px;">POPULAR CHOICES</h2>
+<a id = "grind" href="https://www.grousemountain.com/grousegrind">
+<img id = "pictures" src="assets/choices/grind.jpg" alt ="Grouse Grind">
+</a>
+
+<a id = "bridge" href="https://www.capbridge.com/">
+<img id = "pictures" src="assets/choices/bridge.jpg" alt ="Suspension Bridge">
+</a>
+
+<a id = "science" href="https://www.scienceworld.ca/">
+<img id = "pictures" src="assets/choices/science.jpg" alt ="Science World">
+</a>
+
+<a id = "art" href="http://www.vanartgallery.bc.ca/">
+<img id = "pictures" src="assets/choices/art.jpg" alt ="Art Gallery">
+</a>
+
+<a id = "island" href="http://granvilleisland.com/">
+<img id = "pictures" src="assets/choices/island.jpg" alt ="Granville Island">
+</a>
+
+</div>
+</body>
+</html>

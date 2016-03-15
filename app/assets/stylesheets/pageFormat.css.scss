@@ -1,0 +1,123 @@
+
+#pageTitle{
+
+    border-style:none;
+    padding:10px;
+    position:absolute;
+    top:-190px;
+    left:500px;
+    font-size:30px;
+    color:#00CC66;
+    font-weight:bold;
+    font-variant:small-caps;
+    letter-spacing:0pt;
+    word-spacing:-2pt;
+    text-align:left;
+    font-family:arial black, sans-serif;
+    line-height:1;
+    z-index:10;
+}
+
+#normalTitle{
+
+    border-style:none;
+    padding:10px;
+    /*position:absolute;
+    left:750px;
+    top: 10px;*/
+    text-align: center;
+    font-size:40px;
+    color:#00CC66;
+    font-weight:bold;
+    font-variant:small-caps;
+    letter-spacing:0pt;
+    word-spacing:-2pt;
+    font-family:arial black, sans-serif;
+    line-height:1;
+    z-index:10
+}
+
+
+.loginLink{
+    border-style:none;
+    width:200px;
+    height:50px;
+    padding:10px;
+    position:absolute;
+    top:30px;
+    right:200px;
+    font-size:110%;
+    color:#00CC66;
+    font-weight:bold;
+    font-variant:small-caps;
+    letter-spacing:0pt;
+    word-spacing:-2pt;
+    text-align:left;
+    font-family:arial black, sans-serif;
+    line-height:1;
+
+}
+
+
+.editLink{
+    border-style:none;
+    width:200px;
+    height:50px;
+    padding:10px;
+    position:absolute;
+    top:30px;
+    right:300px;
+    font-size:110%;
+    color:#00CC66;
+    font-weight:bold;
+    font-variant:small-caps;
+    letter-spacing:0pt;
+    word-spacing:-2pt;
+    text-align:left;
+    font-family:arial black, sans-serif;
+    line-height:1;
+}
+
+.newUserLink{
+
+    border-style:none;
+    width:200px;
+    height:50px;
+    padding:10px;
+    position:absolute;
+    top:30px;
+    right:400px;
+    font-size:110%;
+    color:#00CC66;
+    font-weight:bold;
+    font-variant:small-caps;
+    letter-spacing:0pt;
+    word-spacing:-2pt;
+    text-align:left;
+    font-family:arial black, sans-serif;
+    line-height:1;
+
+}
+
+.planRoute{
+    border-style:none;
+    width:200px;
+    height:50px;
+    padding:10px;
+    position:absolute;
+    top:20px;
+    right:600px;
+    font-size:110%;
+    color:#00CC66;
+    font-weight:bold;
+    font-variant:small-caps;
+    letter-spacing:0pt;
+    word-spacing:-2pt;
+    text-align:left;
+    font-family:arial black, sans-serif;
+    line-height:1;
+}
+
+#info{
+    font-size:130%;
+}

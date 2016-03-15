@@ -1,0 +1,427 @@
+/* line 1, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/new.css.scss */
+#newPage {
+  background-color: #cccccc;
+}
+
+/** PICTURES **/
+/* line 6, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/new.css.scss */
+.picture8 {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  top: 40px;
+  left: 130px;
+  padding: 10px;
+}
+
+/* line 16, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/new.css.scss */
+.picture7 {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  top: 40px;
+  left: 130px;
+  padding: 10px;
+}
+
+/* line 26, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/new.css.scss */
+.picture9 {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  top: 40px;
+  left: 130px;
+  padding: 10px;
+}
+
+/* line 36, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/new.css.scss */
+.picture5 {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  top: 40px;
+  left: 130px;
+  padding: 10px;
+}
+
+/* line 46, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/new.css.scss */
+.picture4 {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  top: 40px;
+  left: 130px;
+  padding: 10px;
+}
+
+/* line 56, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/new.css.scss */
+.picture2 {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  top: 40px;
+  left: 130px;
+  padding: 10px;
+}
+
+/** LOGIN PORTION **/
+/* line 69, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/new.css.scss */
+.name {
+  position: relative;
+  left: 1200px;
+  top: 30px;
+  color: black;
+  font-family: courier new, courier, monospace;
+  font-weight: bold;
+  font-size: 150%;
+}
+
+/* line 81, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/new.css.scss */
+.nameField {
+  position: relative;
+  left: 850px;
+  top: 0px;
+  width: 300px;
+  height: 30px;
+  font-size: 150%;
+}
+
+/** BUTTONS **/
+/* line 95, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/new.css.scss */
+.createButton {
+  width: 150px;
+  height: 50px;
+  position: relative;
+  top: 15px;
+  left: 850px;
+  font-size: 120%;
+  background-color: #00CC66;
+  color: black;
+  font-weight: bold;
+  font-variant: small-caps;
+  letter-spacing: 0pt;
+  word-spacing: -2pt;
+  text-align: left;
+  font-family: arial black, sans-serif;
+  line-height: 1;
+}
+
+/** PRE REGISTRATION TEXT **/
+/* line 117, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/new.css.scss */
+#newText {
+  position: relative;
+  top: 30px;
+  left: 475px;
+  font-size: 30px;
+  font-family: arial black,sans-serif;
+}
+
+/* line 125, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/new.css.scss */
+#newLine {
+  position: relative;
+  top: 30px;
+  left: 750px;
+  color: white;
+}
+
+/* line 132, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/new.css.scss */
+#newLogin {
+  position: relative;
+  top: 0px;
+  left: 850px;
+  font-size: 400%;
+}
+
+/* line 1, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/login.css.scss */
+#loginPage, #adminPage, #adminEdit {
+  background-color: #0066CC;
+  background-image: url("Line.png");
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+  background-position: bottom;
+  background-size: 1000px 300px;
+  z-index: 4;
+}
+
+/* line 12, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/login.css.scss */
+#welcome {
+  color: white;
+  font-weight: bold;
+  font-size: 50px;
+  position: fixed;
+  left: 625px;
+  top: 200px;
+}
+
+/* line 23, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/login.css.scss */
+#message {
+  color: #FAF0E6;
+  font-weight: bold;
+  font-size: 130%;
+  position: fixed;
+  top: 350px;
+  left: 700px;
+}
+
+/* line 33, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/login.css.scss */
+#field {
+  border-style: none;
+  position: fixed;
+  top: 400px;
+  left: 625px;
+}
+
+/* line 41, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/login.css.scss */
+#logText {
+  font-size: 50px;
+}
+
+/** LOGIN SECTION **/
+/* line 47, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/login.css.scss */
+.new {
+  position: fixed;
+  left: 640px;
+  top: 475px;
+  font-size: 130%;
+  font-variant: small-caps;
+  font-weight: bold;
+  color: white;
+}
+
+/* line 59, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/login.css.scss */
+.newB {
+  width: 200px;
+  height: 50px;
+  font-size: 150%;
+  border-radius: 10px;
+  position: fixed;
+  top: 500px;
+}
+
+/* line 71, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/login.css.scss */
+.pass {
+  position: fixed;
+  left: 900px;
+  top: 475px;
+  font-size: 130%;
+  font-variant: small-caps;
+  font-weight: bold;
+  color: white;
+}
+
+/* line 84, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/login.css.scss */
+.passB {
+  width: 200px;
+  height: 50px;
+  font-size: 150%;
+  border-radius: 10px;
+  position: fixed;
+  top: 500px;
+  left: 900px;
+}
+
+/* line 97, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/login.css.scss */
+.login {
+  position: fixed;
+  top: 600px;
+  height: 50px;
+  width: 468px;
+  border-radius: 10px;
+  background-color: #00CC66;
+  font-size: 200%;
+  color: white;
+}
+
+/* line 113, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/login.css.scss */
+.signUp {
+  border: solid;
+  border-radius: 10px;
+  border-color: white;
+  padding: 10px;
+  background-color: #00CC66;
+  height: 20px;
+  position: fixed;
+  right: 0;
+  top: 10px;
+  color: white;
+  font-weight: bold;
+  text-decoration: overline;
+  font-variant: small-caps;
+  letter-spacing: 0pt;
+  word-spacing: -2pt;
+  text-align: left;
+  font-family: arial black, sans-serif;
+  line-height: 1;
+}
+
+/** TOPBORDERS **/
+/* line 140, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/login.css.scss */
+#topBorder {
+  border-style: solid;
+  border-color: #1a1a1a;
+  background-color: #1a1a1a;
+  width: 100%;
+  height: 75px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+}
+
+/* line 155, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/login.css.scss */
+#title {
+  padding-left: 20px;
+  position: fixed;
+  top: -15px;
+  z-index: 4;
+}
+
+/* line 163, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/login.css.scss */
+#secondBorder {
+  border-style: solid;
+  border-color: #708090;
+  background-color: #708090;
+  width: 100%;
+  height: 30px;
+  position: fixed;
+  left: 0;
+  top: 75px;
+  z-index: 4;
+}
+
+/* line 1, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/admin.css.scss */
+#wholepage {
+  position: relative;
+  top: 200px;
+  color: white;
+}
+
+/* line 8, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/admin.css.scss */
+#adminEdit {
+  position: relative;
+  left: 100px;
+  top: 200px;
+  color: white;
+}
+
+/* line 15, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/admin.css.scss */
+a:link {
+  font-size: 20px;
+  color: white;
+}
+
+/* line 20, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/admin.css.scss */
+a:visited {
+  font-size: 20px;
+  color: white;
+}
+
+/* line 26, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/admin.css.scss */
+#notice {
+  color: red;
+  font-size: 20px;
+  font-style: bold;
+}
+
+/* line 34, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/admin.css.scss */
+th {
+  width: 250px;
+}
+
+/* line 2, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/pageFormat.css.scss */
+#pageTitle {
+  border-style: none;
+  padding: 10px;
+  position: absolute;
+  top: -190px;
+  left: 500px;
+  font-size: 30px;
+  color: #00CC66;
+  font-weight: bold;
+  font-variant: small-caps;
+  letter-spacing: 0pt;
+  word-spacing: -2pt;
+  text-align: left;
+  font-family: arial black, sans-serif;
+  line-height: 1;
+  z-index: 10;
+}
+
+/* line 21, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/pageFormat.css.scss */
+#normalTitle {
+  border-style: none;
+  padding: 10px;
+  /*position:absolute;
+  left:750px;
+  top: 10px;*/
+  text-align: center;
+  font-size: 40px;
+  color: #00CC66;
+  font-weight: bold;
+  font-variant: small-caps;
+  letter-spacing: 0pt;
+  word-spacing: -2pt;
+  font-family: arial black, sans-serif;
+  line-height: 1;
+  z-index: 10;
+}
+
+/* line 41, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/pageFormat.css.scss */
+.loginLink {
+  border-style: none;
+  width: 200px;
+  height: 50px;
+  padding: 10px;
+  position: absolute;
+  top: 30px;
+  right: 200px;
+  font-size: 110%;
+  color: #00CC66;
+  font-weight: bold;
+  font-variant: small-caps;
+  letter-spacing: 0pt;
+  word-spacing: -2pt;
+  text-align: left;
+  font-family: arial black, sans-serif;
+  line-height: 1;
+}
+
+/* line 62, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/pageFormat.css.scss */
+.editLink {
+  border-style: none;
+  width: 200px;
+  height: 50px;
+  padding: 10px;
+  position: absolute;
+  top: 30px;
+  right: 300px;
+  font-size: 110%;
+  color: #00CC66;
+  font-weight: bold;
+  font-variant: small-caps;
+  letter-spacing: 0pt;
+  word-spacing: -2pt;
+  text-align: left;
+  font-family: arial black, sans-serif;
+  line-height: 1;
+}
+
+/* line 81, /home/beef/Documents/School/CMPT276/GROUP-14/sightseer/app/assets/stylesheets/pageFormat.css.scss */
+.newUserLink {
+  border-style: none;
+  width: 200px;
+  height: 50px;
+  padding: 10px;
+  position: absolute;
+  top: 30px;
+  right: 400px;
+  font-size: 110%;
+  color: #00CC66;
+  font-weight: bold;
+  font-variant: small-caps;
+  letter-spacing: 0pt;
+  word-spacing: -2pt;
+  text-align: left;
+  font-family: arial black, sans-serif;
+  line-height: 1;
+}
