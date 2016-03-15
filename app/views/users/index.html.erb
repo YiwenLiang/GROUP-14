@@ -1,10 +1,7 @@
 
 <% @current_user ||= User.find_by(id: session[:user_id]) %> <!-- This line gets the user's ID**Needed for EDIT**-->
-
-
 <%# THIS IS THE TOP BORDER %>
-<div id = "topBorder"><%= link_to '<p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">
-      SIGHTSEER</p>', users_info_url, class: "infoLink" %>
+<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
 <%= link_to 'Go to Route Planner', map_path, class:"planRoute" %>
 <%= link_to '|New User', new_user_url, class: "newUserLink" %>
 <%= link_to '|Edit User', edit_user_url(@current_user.id), class: "editLink" %>
