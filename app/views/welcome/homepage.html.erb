@@ -2,9 +2,12 @@
 <html class = "test1" lang="en">
 
 <head>
-    
+
 <%# THIS IS THE TOP BORDER %>
-<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
+<div id = "topBorder">
+  <%= link_to users_info_url do %>
+    <p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
+  <% end %>
 <%= link_to 'Login', login_path, class: "loginLink" %>
 <%= link_to 'New User', new_user_url, class: "newUserLink" %>
 </div>
