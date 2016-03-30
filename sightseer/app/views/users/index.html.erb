@@ -1,35 +1,50 @@
-
 <% @current_user ||= User.find_by(id: session[:user_id]) %> <!-- This line gets the user's ID**Needed for EDIT**-->
+<!DOCTYPE html>
+<html class="test1" lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/bootstrap.css">
+</head>
 <%# THIS IS THE TOP BORDER %>
-<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
-<%= link_to 'Go to Route Planner', map_path, class:"planRoute" %>
-<%= link_to '|New User', new_user_url, class: "newUserLink" %>
-<%= link_to '|Edit User', edit_user_url(@current_user.id), class: "editLink" %>
-<%= link_to '|Sign Out', login_url, class: "loginLink" %>
-<h1 style= "position:fixed; left:275px; top:10px; color:white"> Welcome <%= session[:user_username] %>, To SightSeers!</h1>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/users/info" style="padding:10px; text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</a>
+    </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Go to Route Planner', map_path %></li>
+            <li><%= link_to 'New User', new_user_url %></li>
+            <li><%= link_to 'Edit User', edit_user_url(@current_user.id) %></li>
+            <li><%= link_to 'Sign Out', login_url %></li>
+          </ul>
+        </li>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 <% if notice%>
 <p id = "notice"><%= notice%></p>
 <% end %>
-</div>
 
-<div id = "secondBorder"></div>
-   
-   
-   
-   <head>
-    <title>Place Autocomplete Attractions Search</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-  </head>
-    
-  <html class = "test1" lang="en">
+<h2 style= "color:black"> Welcome <%= session[:user_username] %>, To SightSeers!</h2>
 
-<head>
-    
-
-<div id = "secondBorder"></div>
-</head>
 <body class = "test2">
+    
     <!-- Full Page Image Background Carousel Header -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
@@ -72,31 +87,67 @@
         </a>
     </header>
 <%# SLIDE SHOW END %>
+<div class="container-fluid">
 
-<p id = "newLine">______________________________________________________________</p>
+<div class="row">
+    <div class="col-md-12">
+        <p id="newLine">______________________________________________________________</p>
+    </div>
+    <div class="col-md-12">
+        <h2 style="text-align:center; position:relative; top:30px;">POPULAR CHOICES</h2>
+    </div>
+</div>
+<div class="row" id="pictureLinks" style="padding-top:20px;">
 
-<div id = "pictureLinks">
+    <div class="col-md-2">
+        <div class="crop">
+            <a id="grind" href="https://www.grousemountain.com/grousegrind">
+                <img id="pictures" src="assets/choices/grind.jpg" alt="Grouse Grind">
+            </a>
+        </div>
+    </div>
 
-<h2 style="text-align:center; position:relative; top:30px;">POPULAR CHOICES</h2>
-<a id = "grind" href="https://www.grousemountain.com/grousegrind">
-<img id = "pictures" src="assets/choices/grind.jpg" alt ="Grouse Grind">
-</a>
+    <div class="col-md-2">
+        <div class="crop">
+            <a id="bridge" href="https://www.capbridge.com/">
+                <img id="pictures" src="assets/choices/bridge.jpg" alt="Suspension Bridge">
+            </a>
+        </div>
+    </div>
 
-<a id = "bridge" href="https://www.capbridge.com/">
-<img id = "pictures" src="assets/choices/bridge.jpg" alt ="Suspension Bridge">
-</a>
+    <div class="col-md-2">
+        <div class="crop">
+            <a id="science" href="https://www.scienceworld.ca/">
+                <img id="pictures" src="assets/choices/science.jpg" alt="Science World">
+            </a>
+        </div>
+    </div>
 
-<a id = "science" href="https://www.scienceworld.ca/">
-<img id = "pictures" src="assets/choices/science.jpg" alt ="Science World">
-</a>
+    <div class="col-md-2">
+        <div class="crop">
+            <a id="art" href="http://www.vanartgallery.bc.ca/">
+                <img id="pictures" src="assets/choices/art.jpg" alt="Art Gallery">
+            </a>
+        </div>
+    </div>
 
-<a id = "art" href="http://www.vanartgallery.bc.ca/">
-<img id = "pictures" src="assets/choices/art.jpg" alt ="Art Gallery">
-</a>
+    <div class="col-md-2">
+        <div class="crop">
+            <a id="island" href="http://granvilleisland.com/">
+                <img id="pictures" src="assets/choices/island.jpg" alt="Granville Island">
+            </a>
+        </div>
+    </div>
 
-<a id = "island" href="http://granvilleisland.com/">
-<img id = "pictures" src="assets/choices/island.jpg" alt ="Granville Island">
-</a>
+    <div class="col-md-2">
+        <div class="crop">
+            <a id="aquarium" href="http://www.vanaqua.org/">
+                <img id="pictures" src="assets/choices/aquarium.jpg" alt="Vancouver Aquarium">
+            </a>
+        </div>
+    </div>
+
+</div>
 
 
 </div>
@@ -113,6 +164,7 @@
         <option value="ca">Canada</option>
       </select>
     </div>
+    
     
     <div id = "mapContainer">
     <div id="map" style="height: 100%; color:black; width: 100%;"></div>
@@ -151,9 +203,10 @@
         </table>
       </div>
     </div>
-    
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaU5DbGvX_-OOZwj-az4zT4iC6gp8MmQQ&libraries=places&callback=initMap"async defer></script>    
-    <script src="assets/home.js"></script>
 
+</div>
 </body>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaU5DbGvX_-OOZwj-az4zT4iC6gp8MmQQ&libraries=places&callback=initMap"async defer></script>    
+<script src="assets/home.js"></script>
+<script src="/assets/bootstrap.js"></script>
 </html>

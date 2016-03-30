@@ -74,7 +74,7 @@
     function search() {
         var search = {
             bounds: map.getBounds(),
-            types: ['park']
+            types: ['university']
         };
 
         places.nearbySearch(search, function(results, status) {

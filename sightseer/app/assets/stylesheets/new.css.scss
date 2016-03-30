@@ -4,62 +4,33 @@
 
 /** PICTURES **/
 .picture8{
-    width:600px;
-    height:400px;
-    
-    position:relative;
-    top:40px;
-    left:130px;
-    padding:10px;
+width:100%;
+height:100%;
 }
 
 .picture7{
-    width:600px;
-    height:400px;
-    
-    position:relative;
-    top:40px;
-    left:130px;
-    padding:10px;
+width:100%;
+height:100%;
 }
 
 .picture9{
-    width:600px;
-    height:400px;
-    
-    position:relative;
-    top:40px;
-    left:130px;
-    padding:10px;
+width:100%;
+height:100%;
 }
 
 .picture5{
-    width:600px;
-    height:400px;
-    
-    position:relative;
-    top:40px;
-    left:130px;
-    padding:10px;
+width:100%;
+height:100%;
 }
 
 .picture4{
-    width:600px;
-    height:400px;
-    
-    position:relative;
-    top:40px;
-    left:130px;
-    padding:10px;
+width:100%;
+height:100%;
 }
 
 .picture2{
-    width:600px;
-    height:400px;
-    position:relative;
-    top:40px;
-    left:130px;
-    padding:10px;
+width:100%;
+height:100%;
 }
 
 /** LOGIN PORTION **/
@@ -67,9 +38,6 @@
 
 
 .name{
-    position:relative;
-    left:1200px;
-    top:30px;
 
     color: black;
     font-family:courier new, courier, monospace;
@@ -79,9 +47,6 @@
 }
 
 .nameField{
-    position:relative;
-    left:850px;
-    top:0px;
     
     width:300px;
     height:30px;
@@ -95,9 +60,7 @@
 .createButton{
     width:150px;
     height:50px;
-    position:relative;
-    top:15px;
-    left:850px;
+    
     font-size:120%;
     background-color:#00CC66;
     color:black;
@@ -114,25 +77,26 @@
 
 /** PRE REGISTRATION TEXT **/
 
+#inputPart{
+    text-align:center;
+}
+
 #newText{
-    position:relative;
-    top:30px;
-    left:475px;
+    text-align:center;
     font-size:30px;
     font-family:arial black,sans-serif;
 }
 
 #newLine{
-    position:relative;
-    top:30px;
-    left:750px;
+    text-align:center;
     color:white;
 }
 
 #newLogin{
-    position:relative;
-    top:0px;
-    left:850px;
+    text-align:center;
     font-size:400%;
+}
 
+.createButton{
+    text-align:center;
 }

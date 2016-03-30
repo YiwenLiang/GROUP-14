@@ -1,16 +1,42 @@
 <!DOCTYPE html>
-<html class = "test1" lang="en">
+<html lang="en">
 
 <head>
-    
-<%# THIS IS THE TOP BORDER %>
-<div id = "topBorder"><p id = "title" style="text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;text-decoration:underline;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</p>
-<%= link_to 'Login', login_path, class: "loginLink" %>
-<%= link_to 'New User', new_user_url, class: "newUserLink" %>
-</div>
-
-<div id = "secondBorder"></div>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/bootstrap.css">
 </head>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/users/info" style="padding:10px; text-shadow:5px 2px 0 rgba(0,204,102,1);font-weight:bold;color:white;letter-spacing:0pt;word-spacing:2pt;font-size:33px;text-align:left;font-family:arial black, sans-serif;line-height:1;">SIGHTSEER</a>
+    </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Login', login_path %></li>
+            <li><%= link_to 'New User', new_user_url %></li>
+          </ul>
+        </li>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
 <body class = "test2">
     <!-- Full Page Image Background Carousel Header -->
     <header id="myCarousel" class="carousel slide">
@@ -53,34 +79,77 @@
             <span class="icon-next"></span>
         </a>
     </header>
+
 <div></div>
 <%# SLIDE SHOW END %>
+<div class="container-fluid">
+    
+<div class="row">
+    <div class="col-md-12">
+        <p id="newLine">______________________________________________________________</p>
+    </div>
+    <div class="col-md-12">
+        <h2 style="text-align:center; position:relative; top:30px;">POPULAR CHOICES</h2>
+    </div>
+</div>
 
-<p id = "newLine">______________________________________________________________</p>
 
-<div id = "pictureLinks">
+<div class="row" id="pictureLinks">
 
-<h2 style="text-align:center; position:relative; top:30px;">POPULAR CHOICES</h2>
-<a id = "grind" href="https://www.grousemountain.com/grousegrind">
-<img id = "pictures" src="assets/choices/grind.jpg" alt ="Grouse Grind">
-</a>
+    <div class="col-md-2">
+        <div class="crop">
+            <a id="grind" href="https://www.grousemountain.com/grousegrind">
+                <img id="pictures" src="assets/choices/grind.jpg" alt="Grouse Grind">
+            </a>
+        </div>
+    </div>
 
-<a id = "bridge" href="https://www.capbridge.com/">
-<img id = "pictures" src="assets/choices/bridge.jpg" alt ="Suspension Bridge">
-</a>
+    <div class="col-md-2">
+        <div class="crop">
+            <a id="bridge" href="https://www.capbridge.com/">
+                <img id="pictures" src="assets/choices/bridge.jpg" alt="Suspension Bridge">
+            </a>
+        </div>
+    </div>
 
-<a id = "science" href="https://www.scienceworld.ca/">
-<img id = "pictures" src="assets/choices/science.jpg" alt ="Science World">
-</a>
+    <div class="col-md-2">
+        <div class="crop">
+            <a id="science" href="https://www.scienceworld.ca/">
+                <img id="pictures" src="assets/choices/science.jpg" alt="Science World">
+            </a>
+        </div>
+    </div>
 
-<a id = "art" href="http://www.vanartgallery.bc.ca/">
-<img id = "pictures" src="assets/choices/art.jpg" alt ="Art Gallery">
-</a>
+    <div class="col-md-2">
+        <div class="crop">
+            <a id="art" href="http://www.vanartgallery.bc.ca/">
+                <img id="pictures" src="assets/choices/art.jpg" alt="Art Gallery">
+            </a>
+        </div>
+    </div>
 
-<a id = "island" href="http://granvilleisland.com/">
-<img id = "pictures" src="assets/choices/island.jpg" alt ="Granville Island">
-</a>
+    <div class="col-md-2">
+        <div class="crop">
+            <a id="island" href="http://granvilleisland.com/">
+                <img id="pictures" src="assets/choices/island.jpg" alt="Granville Island">
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="crop">
+            <a id="aquarium" href="http://www.vanaqua.org/">
+                <img id="pictures" src="assets/choices/aquarium.jpg" alt="Vancouver Aquarium">
+            </a>
+        </div>
+    </div>
 
 </div>
+</div>
 </body>
+
+
+<script src="/assets/bootstrap.js"></script>
 </html>
+
+
