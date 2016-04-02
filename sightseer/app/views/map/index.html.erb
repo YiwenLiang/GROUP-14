@@ -67,9 +67,9 @@
     </div>
     <script>
       var map;
-      var place;
+      var places = [];
       var placeLoc;
-      var infowindow;
+      var infowindows =[];
       var markers = [];
       var waypts = [];
       var wayptsT = [];
@@ -109,7 +109,6 @@
 
         document.getElementById('submit').addEventListener("click", makeRoute);
 
-        infowindow = new google.maps.InfoWindow();
         var service = new google.maps.places.PlacesService(map);
         var doSearch = function() {
           var dtype = document.getElementById('destinationType').value;
@@ -132,32 +131,29 @@
         clearMarkers();
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
-            place = results[i];
-            placeLoc = place.geometry.location;
-            markers[i] = createMarker(place);
+            places[i] = results[i];
+            markers[i] = createMarker(i);
           }
         }
       }
 
-      function addDest(place) {
-        wayptsT.push({
-          location: place.geometry.location,
-          stopover: true
+      function createMarker(i) {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: places[i].geometry.location
         });
-        //add the place.location to the wayptsT array
-        //add the place to the trip table
-        var row = tripTable.insertRow(0);
-        var cell0 = row.insertCell(0);
-        cell0.innerHTML = place.name;
-        //close the infowindow
-      }
 
-      function removeDest() {
-        //remove the place from the wayptsT array
-        //remove the place from the trip table
-      }
+        infowindows[i] = new google.maps.InfoWindow();
 
-      function createMarker(place) {
+        google.maps.event.addListener(marker, 'click', function() {
+          //This doesn't pass the correct index to addDest(i) even though it sets the content of the correct infowindows[i]
+          infowindows[i].setContent(places[i].name + "<button id='addDest' type='button' onclick='addDest(i)'>Add to Trip</button>");
+          //document.getElementById('addDest').addEventListener('click', function(){ addDest(i); });
+          infowindows[i].open(map, marker);
+        });
+
+      }
+      /*function createMarker(place) {
         var marker = new google.maps.Marker({
           map: map,
           position: place.geometry.location
@@ -168,6 +164,23 @@
           infowindow.open(map, this);
         });
         return marker;
+      }*/
+      function addDest(i) {
+        wayptsT.push({
+          location: places[i].geometry.location,
+          stopover: true
+        });
+        //add the place.location to the wayptsT array
+        //add the place to the trip table
+        var row = tripTable.insertRow(0);
+        var cell0 = row.insertCell(0);
+        cell0.innerHTML = places[i].name;
+        //close the infowindow
+      }
+
+      function removeDest() {
+        //remove the place from the wayptsT array
+        //remove the place from the trip table
       }
 
       function clearMarkers() {
