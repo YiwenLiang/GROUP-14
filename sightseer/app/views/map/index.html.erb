@@ -146,12 +146,11 @@
         infowindows[i] = new google.maps.InfoWindow();
 
         google.maps.event.addListener(marker, 'click', function() {
-          //This doesn't pass the correct index to addDest(i) even though it sets the content of the correct infowindows[i]
-          infowindows[i].setContent(places[i].name + "<button id='addDest' type='button' onclick='addDest(i)'>Add to Trip</button>");
-          //document.getElementById('addDest').addEventListener('click', function(){ addDest(i); });
+          infowindows[i].setContent(places[i].name + "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>");
+          clearIWs();
           infowindows[i].open(map, marker);
         });
-
+        return marker;
       }
       /*function createMarker(place) {
         var marker = new google.maps.Marker({
@@ -190,6 +189,11 @@
             }
         }
         markers = [];
+      }
+      function clearIWs() {
+        for (var i = 0; i < infowindows.length; i++) {
+          infowindows[i].close();
+        }
       }
 
       function calcRoute(directionsService, directionsDisplay) {
