@@ -3,30 +3,39 @@
   <head>
     <title>Map</title>
     <meta charset="utf-8">
-    <style>
-
-
-    </style>
   </head>
   <body id = "body">
-    <div id="map"></div>
-    <div id="panel">
+
+    <div id="leftpanel">
       <div id="titlebox">
         <p id="title">SIGHTSEER</p>
         <p id="subtitle">route planner</p>
       </div>
-      <div id="infobox">
+      <div class="infobox">
+        <p><b>Search For: </b></p>
+        <select id="destinationType">
+          <option selected disabled>Choose Destination Type</option>
+          <option value="park">Parks</option>
+          <option value="museum">Museums</option>
+        </select>
+        <p><b>Your Trip: </b></p>
+        <table id="trip">
+        </table>
+      </div>
+    </div>
+
+    <div id="map"></div>
+
+    <div id="rightpanel">
+      <div class="infobox">
+        <p><b>Calculate Route</b></p>
         <p><b>Mode of Transportation</b></p>
         <select id="travelMode">
           <option value="DRIVING">Driving</option>
           <option value="TRANSIT">Public Transit</option>
           <option value="WALKING">On Foot</option>
         </select>
-        <select id="destinationType">
-          <option selected disabled>Choose Destination Type</option>
-          <option value="park">Parks</option>
-          <option value="museum">Museums</option>
-        </select>
+
         <p><b>Start:</b></p>
         <input type="text" id="start" value="Chilliwack, BC">
         <br>
@@ -62,8 +71,9 @@
       var infowindow;
       var markers = [];
       var waypts = [];
+      var wayptsT = [];
 
-      //waypoints are hidden from user when public transit is selected
+      //waypoints are hidden from user when public transit is selected DELETE ONCE TRIP IS IMPLEMENTED
       var hideWaypts = function() {
         if (document.getElementById('travelMode').value == "TRANSIT") {
           document.getElementById('waypointsBox').style.display = 'none';
@@ -111,6 +121,7 @@
       }
 
       function callback(results, status) {
+        clearMarkers();
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
             place = results[i];
@@ -122,6 +133,7 @@
 
       function addDest() {
         window.alert("Workin on it.");
+
         //add the place.location to the waypts array
       }
 
@@ -137,6 +149,15 @@
         });
 
         return marker;
+      }
+
+      function clearMarkers() {
+        for (var i = 0; i < markers.length; i++) {
+            if (markers[i]) {
+                markers[i].setMap(null);
+            }
+        }
+        markers = [];
       }
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {

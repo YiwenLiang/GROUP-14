@@ -12,7 +12,7 @@ html, body{
   width: 60%;
 }
 #titlebox {
-  width: 60%;
+  width: 80%;
   margin: auto;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -44,15 +44,23 @@ html, body{
   margin: 5px;
   padding: 0;
 }
-#infobox {
+.infobox {
   margin: auto;
   padding: 8px;
   width: 80%;
   background-color: white;
 }
-#panel {
+#leftpanel {
   height: 100%;
-  width: 40%;
+  width: 20%;
+  padding: 20px;
+  float: left;
+  background-color: #0066CC;
+}
+#rightpanel {
+  height: 100%;
+  width: 20%;
+  padding: 20px;
   float: left;
   background-color: #0066CC;
 }
