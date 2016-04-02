@@ -68,12 +68,12 @@
     <script>
       var map;
       var places = [];
-      var placeLoc;
       var infowindows =[];
       var markers = [];
       var waypts = [];
       var wayptsT = [];
       var tripTable = document.getElementById("trip");
+      var tableIndex = 0;
 
       //waypoints are hidden from user when public transit is selected DELETE ONCE TRIP IS IMPLEMENTED
       var hideWaypts = function() {
@@ -119,6 +119,7 @@
 
       }
 
+      //Finds search results and passes them to callback function
       function search(service, dtype) {
         service.nearbySearch({
           location: {lat: 49.278947, lng: -122.916525},
@@ -127,6 +128,7 @@
         }, callback);
       }
 
+      //called by the search funtion. Calls createMarker for each search result.
       function callback(results, status) {
         clearMarkers();
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -137,6 +139,7 @@
         }
       }
 
+      //creates a marker and an Infowindow that opens when the marker is clicked
       function createMarker(i) {
         var marker = new google.maps.Marker({
           map: map,
@@ -152,34 +155,28 @@
         });
         return marker;
       }
-      /*function createMarker(place) {
-        var marker = new google.maps.Marker({
-          map: map,
-          position: place.geometry.location
-        });
 
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent(place.name + "<button id='addDest' type='button' onclick='addDest(place)'>Add to Trip</button>");
-          infowindow.open(map, this);
-        });
-        return marker;
-      }*/
       function addDest(i) {
+        //add the destination location to the waypts list
         wayptsT.push({
           location: places[i].geometry.location,
           stopover: true
         });
-        //add the place.location to the wayptsT array
-        //add the place to the trip table
-        var row = tripTable.insertRow(0);
+        //add the destination name to the trip table
+        var row = tripTable.insertRow(tableIndex++);
         var cell0 = row.insertCell(0);
+        var cell1 = row.insertCell(1);
         cell0.innerHTML = places[i].name;
-        //close the infowindow
+        cell1.innerHTML = '<input type="button" value="Delete" onclick="removeDest(this)">';
       }
 
-      function removeDest() {
+      function removeDest(r) {
+        var i = r.parentNode.parentNode.rowIndex;
         //remove the place from the wayptsT array
+        wayptsT.splice(i, 1);
         //remove the place from the trip table
+        tripTable.deleteRow(i);
+        tableIndex--;
       }
 
       function clearMarkers() {
@@ -190,6 +187,8 @@
         }
         markers = [];
       }
+
+      //closes any opened Infowindows. Called when route is being displayed.
       function clearIWs() {
         for (var i = 0; i < infowindows.length; i++) {
           infowindows[i].close();
@@ -198,6 +197,7 @@
 
       function calcRoute(directionsService, directionsDisplay) {
         clearMarkers();
+        document.getElementById("destinationType").value = "";
 
         directionsService.route({
           origin: document.getElementById("start").value,
