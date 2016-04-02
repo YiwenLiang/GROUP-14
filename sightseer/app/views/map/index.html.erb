@@ -22,6 +22,11 @@
           <option value="TRANSIT">Public Transit</option>
           <option value="WALKING">On Foot</option>
         </select>
+        <select id="destinationType">
+          <option selected disabled>Choose Destination Type</option>
+          <option value="park">Parks</option>
+          <option value="museum">Museums</option>
+        </select>
         <p><b>Start:</b></p>
         <input type="text" id="start" value="Chilliwack, BC">
         <br>
@@ -52,6 +57,10 @@
     </div>
     <script>
       var map;
+      var place;
+      var placeLoc;
+      var infowindow;
+      var markers = [];
 
       //waypoints are hidden from user when public transit is selected
       var hideWaypts = function() {
@@ -64,13 +73,14 @@
       document.getElementById('travelMode').addEventListener('change', hideWaypts);
 
 
+
       function initMap() {
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
 
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 49.278947, lng: -122.916525},
-          zoom: 14
+          zoom: 11
         });
         directionsDisplay.setMap(map);
 
@@ -79,6 +89,63 @@
         };
 
         document.getElementById('submit').addEventListener("click", makeRoute);
+
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        var doSearch = function() {
+          var dtype = document.getElementById('destinationType').value;
+          search(service, dtype);
+        };
+
+        document.getElementById('destinationType').addEventListener('change', doSearch);
+
+      }
+
+      function search(service, dtype) {
+        service.nearbySearch({
+          location: {lat: 49.278947, lng: -122.916525},
+          radius: 50000,
+          type: [dtype]
+        }, callback);
+      }
+
+      //All infowindows are displaying the same Name and Rating based on the destinationType
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            place = results[i];
+            placeLoc = place.geometry.location;
+            markers[i] = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location
+            });
+
+            google.maps.event.addListener(markers[i], 'click', makeIW);
+
+          }
+        }
+      }
+
+      function makeIW() {
+        infowindow.setContent(place.name + "<button id='addDest' type='button' onclick='addDest()'>Add to Trip</button>");
+        infowindow.open(map, this);
+      }
+
+      function addDest() {
+        window.alert("Workin on it.");
+      }
+
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name + '<br>' + "<button type'button'=>Don't touch me</button>");
+          infowindow.open(map, this);
+        });
       }
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
@@ -116,6 +183,8 @@
           }
         })
       }
+
+
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaU5DbGvX_-OOZwj-az4zT4iC6gp8MmQQ&libraries=places&callback=initMap"
