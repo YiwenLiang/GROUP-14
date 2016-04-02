@@ -21,6 +21,7 @@
         <p><b>Your Trip: </b></p>
         <table id="trip">
         </table>
+        <button id="calcRouteButton">Calculate Route</button>
       </div>
     </div>
 
@@ -72,6 +73,7 @@
       var markers = [];
       var waypts = [];
       var wayptsT = [];
+      var tripTable = document.getElementById("trip");
 
       //waypoints are hidden from user when public transit is selected DELETE ONCE TRIP IS IMPLEMENTED
       var hideWaypts = function() {
@@ -94,6 +96,12 @@
           zoom: 11
         });
         directionsDisplay.setMap(map);
+
+        var callCalcRoute = function() {
+          calcRoute(directionsService, directionsDisplay);
+        }
+
+        document.getElementById('calcRouteButton').addEventListener("click", callCalcRoute);
 
         var makeRoute = function() {
           calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -131,10 +139,22 @@
         }
       }
 
-      function addDest() {
-        window.alert("Workin on it.");
+      function addDest(place) {
+        wayptsT.push({
+          location: place.geometry.location,
+          stopover: true
+        });
+        //add the place.location to the wayptsT array
+        //add the place to the trip table
+        var row = tripTable.insertRow(0);
+        var cell0 = row.insertCell(0);
+        cell0.innerHTML = place.name;
+        //close the infowindow
+      }
 
-        //add the place.location to the waypts array
+      function removeDest() {
+        //remove the place from the wayptsT array
+        //remove the place from the trip table
       }
 
       function createMarker(place) {
@@ -144,10 +164,9 @@
         });
 
         google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent(place.name + "<button id='addDest' type='button' onclick='addDest()'>Add to Trip</button>");
+          infowindow.setContent(place.name + "<button id='addDest' type='button' onclick='addDest(place)'>Add to Trip</button>");
           infowindow.open(map, this);
         });
-
         return marker;
       }
 
@@ -158,6 +177,26 @@
             }
         }
         markers = [];
+      }
+
+      function calcRoute(directionsService, directionsDisplay) {
+        clearMarkers();
+
+        directionsService.route({
+          origin: document.getElementById("start").value,
+          destination: document.getElementById("end").value,
+          waypoints: wayptsT,
+          optimizeWaypoints: true,
+          travelMode: google.maps.TravelMode[document.getElementById("travelMode").value]
+        },
+        function(response, status) {
+          if (status === google.maps.DirectionsStatus.OK) {
+            document.getElementById('errorBox').innerHTML = '';
+            directionsDisplay.setDirections(response);
+          } else {
+            document.getElementById('errorBox').innerHTML = 'Error: ' + status;
+          }
+        })
       }
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
