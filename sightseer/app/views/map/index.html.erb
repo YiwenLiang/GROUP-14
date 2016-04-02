@@ -61,6 +61,7 @@
       var placeLoc;
       var infowindow;
       var markers = [];
+      var waypts = [];
 
       //waypoints are hidden from user when public transit is selected
       var hideWaypts = function() {
@@ -109,48 +110,36 @@
         }, callback);
       }
 
-      //All infowindows are displaying the same Name and Rating based on the destinationType
       function callback(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
             place = results[i];
             placeLoc = place.geometry.location;
-            markers[i] = new google.maps.Marker({
-              map: map,
-              position: place.geometry.location
-            });
-
-            google.maps.event.addListener(markers[i], 'click', makeIW);
-
+            markers[i] = createMarker(place);
           }
         }
       }
 
-      function makeIW() {
-        infowindow.setContent(place.name + "<button id='addDest' type='button' onclick='addDest()'>Add to Trip</button>");
-        infowindow.open(map, this);
-      }
-
       function addDest() {
         window.alert("Workin on it.");
+        //add the place.location to the waypts array
       }
 
       function createMarker(place) {
-        var placeLoc = place.geometry.location;
         var marker = new google.maps.Marker({
           map: map,
           position: place.geometry.location
         });
 
         google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent(place.name + '<br>' + "<button type'button'=>Don't touch me</button>");
+          infowindow.setContent(place.name + "<button id='addDest' type='button' onclick='addDest()'>Add to Trip</button>");
           infowindow.open(map, this);
         });
+
+        return marker;
       }
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-
-        var waypts = []; //will collect the chosed waypoints
         var wayptsAll = document.getElementsByName('waypoint');
 
         //Waypoints are disabled if user is using public transit
