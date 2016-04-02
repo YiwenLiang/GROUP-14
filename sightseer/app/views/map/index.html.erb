@@ -65,6 +65,31 @@
       </div>
       <%= link_to 'Sign Out', login_url, id: 'back' %>
     </div>
+    <div stype="display: none">
+      <div id="IWcontent">
+        <table>
+          <tr id="IW-name-row">
+            <td><b>Name: </b></td>
+            <td id="IW-name"></td>
+          </tr>
+          <tr>
+            <td>Rating: </td>
+            <td id="IW-rating"></td>
+          </tr>
+          <tr id="IW-phone-row">
+            <td>Phone Number: </td>
+            <td id="IW-phone"></td>
+          </tr>
+          <tr id='IW-price-row'>
+            <td>Price: </td>
+            <td id="IW-price"></td>
+          </tr>
+          <tr>
+            <td><button id='IW-addDest' type='button'>Add to Trip</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
     <script>
       var map;
       var places = [];
@@ -146,10 +171,51 @@
           position: places[i].geometry.location
         });
 
-        infowindows[i] = new google.maps.InfoWindow();
+        /*
+        //Will need to get this working for infowindows to have things like phone number or price
+        places.getDetails({
+          placeId: places[i].place_id
+        },
+        function(placeResults, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+            places[i] = placeResults;
+          }
+        });
+        */
+
+        infowindows[i] = new google.maps.InfoWindow({
+          content: document.getElementById('IWcontent')
+        });
 
         google.maps.event.addListener(marker, 'click', function() {
-          infowindows[i].setContent(places[i].name + "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>");
+          document.getElementById('IW-name').innerHTML = places[i].name;
+          if (places[i].rating) {
+            document.getElementById('IW-rating').innerHTML = places[i].rating;
+          }
+          //requires getDetails
+          if (places[i].formatted_phone_number) {
+            document.getElementById('IW-phone').textContent = places[i].formatted_phone_number;
+          }else{
+            document.getElementById('IW-phone-row').style.display = 'none';
+          }
+          //requires getDetails
+          if (places[i].price_level) {
+            if (places[i].price_level == 1) {
+              document.getElementById('IW-price').innerHTML = 'Inexpensive';
+            }
+            if (places[i].price_level == 2) {
+              document.getElementById('IW-price').innerHTML = 'Moderate';
+            }
+            if (places[i].price_level == 3) {
+              document.getElementById('IW-price').innerHTML = 'Expensive';
+            }
+            if (places[i].price_level == 4) {
+              document.getElementById('IW-price').innerHTML = 'Very Expensive';
+            }
+          }else{
+            document.getElementById('IW-price-row').style.display = 'none';
+          }
+          document.getElementById('IW-addDest').onclick = function() {addDest(i)};
           clearIWs();
           infowindows[i].open(map, marker);
         });
@@ -157,7 +223,7 @@
       }
 
       function addDest(i) {
-        //add the destination location to the waypts list
+        //add the destination location to the wayptsT list
         wayptsT.push({
           location: places[i].geometry.location,
           stopover: true
