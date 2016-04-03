@@ -65,6 +65,7 @@
       </div>
       <%= link_to 'Sign Out', login_url, id: 'back' %>
     </div>
+
     <script>
       var map;
       var places = [];
@@ -146,8 +147,6 @@
           position: places[i].geometry.location
         });
 
-        infowindows[i] = new google.maps.InfoWindow();
-
         /*
         //Will need to get this working for infowindows to have things like phone number or price
         places.getDetails({
@@ -160,8 +159,11 @@
         });
         */
 
+        infowindows[i] = new google.maps.InfoWindow();
+
         google.maps.event.addListener(marker, 'click', function() {
           infowindows[i].setContent("<b>Location Name: </b>" + places[i].name + "<br>" + "<p>Rating: " + places[i].rating + "</p>" + "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>");
+
           clearIWs();
           infowindows[i].open(map, marker);
         });
@@ -169,7 +171,7 @@
       }
 
       function addDest(i) {
-        //add the destination location to the waypts list
+        //add the destination location to the wayptsT list
         wayptsT.push({
           location: places[i].geometry.location,
           stopover: true
