@@ -148,8 +148,20 @@
 
         infowindows[i] = new google.maps.InfoWindow();
 
+        /*
+        //Will need to get this working for infowindows to have things like phone number or price
+        places.getDetails({
+          placeId: places[i].place_id
+        },
+        function(placeResults, status) {
+          if (status == google.maps.places.PlacesServiceStatus.OK) {
+            places[i] = placeResults;
+          }
+        });
+        */
+
         google.maps.event.addListener(marker, 'click', function() {
-          infowindows[i].setContent(places[i].name + "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>");
+          infowindows[i].setContent("<b>Location Name: </b>" + places[i].name + "<br>" + "<p>Rating: " + places[i].rating + "</p>" + "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>");
           clearIWs();
           infowindows[i].open(map, marker);
         });
