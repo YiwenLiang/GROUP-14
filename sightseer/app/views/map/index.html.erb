@@ -11,6 +11,17 @@
     <div id="rightpanel">
 
       <div class="infobox">
+        <p><b>Search For: </b></p>
+        <p>
+          <select id="destinationType">
+            <option selected disabled>Choose Destination Type</option>
+            <option value="park">Parks</option>
+            <option value="museum">Museums</option>
+          </select>
+        </p>
+      </div>
+
+      <div class="infobox">
         <p><b>Mode of Transportation</b></p>
         <p>
           <select id="travelMode">
@@ -21,18 +32,11 @@
         </p>
 
         <p><b>Start:</b></p>
-        <p><input type="text" id="start" value="SFU, BC"></p>
+        <p><span id="startPos">A </span><input type="text" id="start" value="SFU, BC"></p>
         <br>
 
         <div id="tripBox">
-          <p><b>Search For: </b></p>
-          <p>
-            <select id="destinationType">
-              <option selected disabled>Choose Destination Type</option>
-              <option value="park">Parks</option>
-              <option value="museum">Museums</option>
-            </select>
-          </p>
+
           <p><b>Your Trip: </b></p>
           <table id="trip">
           </table>
@@ -40,7 +44,7 @@
 
         <br>
         <p><b>End:</b></p>
-        <p><input type="text" id="end" value="SFU, BC"></p>
+        <p><span id="endPos"></span><input type="text" id="end" value="SFU, BC"></p>
         <br>
 
         <button id="calcRouteButton">Calculate Route</button>
@@ -128,7 +132,8 @@
       function createMarker(i) {
         var marker = new google.maps.Marker({
           map: map,
-          position: places[i].geometry.location
+          position: places[i].geometry.location,
+          animation: google.maps.Animation.DROP
         });
 
         /*
@@ -258,6 +263,9 @@
           OrderCell.innerHTML = Alpha[j+1];
           OrderCell.style.fontWeight = 'bold';
         }
+        document.getElementById('startPos').style.display = 'initial';
+        document.getElementById('endPos').style.display = 'initial';
+        document.getElementById('endPos').innerHTML = Alpha[response.geocoded_waypoints.length - 1] + ' ';
       }
 
       /*function calculateAndDisplayRoute(directionsService, directionsDisplay) {

@@ -46,7 +46,10 @@
   padding: 0;
 }
 .infobox {
-  margin: auto;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 8px;
   width: 80%;
   background-color: white;
@@ -58,8 +61,9 @@
   float: left;
   background-color: #0066CC;
 }
-#trip {
-  
+#startPos, #endPos {
+  font-weight: bold;
+  display: none;
 }
 #back {
   position: absolute;
