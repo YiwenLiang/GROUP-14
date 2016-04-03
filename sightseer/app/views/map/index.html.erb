@@ -166,7 +166,7 @@
 
       //creates a marker and an Infowindow that opens when the marker is clicked
       function createMarker(i) {
-        var marker = new google.maps.Marker({
+        var thismarker = new google.maps.Marker({
           map: map,
           position: places[i].geometry.location
         });
@@ -187,7 +187,7 @@
           content: document.getElementById('IWcontent')
         });
 
-        google.maps.event.addListener(marker, 'click', function() {
+        google.maps.event.addListener(thismarker, 'click', function() {
           document.getElementById('IW-name').innerHTML = places[i].name;
           if (places[i].rating) {
             document.getElementById('IW-rating').innerHTML = places[i].rating;
@@ -217,9 +217,9 @@
           }
           document.getElementById('IW-addDest').onclick = function() {addDest(i)};
           clearIWs();
-          infowindows[i].open(map, marker);
+          infowindows[i].open(map, thismarker);
         });
-        return marker;
+        return thismarker;
       }
 
       function addDest(i) {
