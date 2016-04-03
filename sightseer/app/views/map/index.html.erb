@@ -1,66 +1,49 @@
 <!DOCTYPE html>
-<html id = "html">
+<html id = "maphtml">
   <head>
     <title>Map</title>
     <meta charset="utf-8">
   </head>
-  <body id = "body">
-
-    <div id="leftpanel">
-      <div id="titlebox">
-        <p id="title">SIGHTSEER</p>
-        <p id="subtitle">route planner</p>
-      </div>
-      <div class="infobox">
-        <p><b>Search For: </b></p>
-        <select id="destinationType">
-          <option selected disabled>Choose Destination Type</option>
-          <option value="park">Parks</option>
-          <option value="museum">Museums</option>
-        </select>
-        <p><b>Your Trip: </b></p>
-        <table id="trip">
-        </table>
-        <button id="calcRouteButton">Calculate Route</button>
-      </div>
-    </div>
+  <body id = "mapbody">
 
     <div id="map"></div>
 
     <div id="rightpanel">
+
       <div class="infobox">
-        <p><b>Calculate Route</b></p>
         <p><b>Mode of Transportation</b></p>
-        <select id="travelMode">
-          <option value="DRIVING">Driving</option>
-          <option value="TRANSIT">Public Transit</option>
-          <option value="WALKING">On Foot</option>
-        </select>
+        <p>
+          <select id="travelMode">
+            <option value="DRIVING">Driving</option>
+            <option value="TRANSIT">Public Transit</option>
+            <option value="WALKING">On Foot</option>
+          </select>
+        </p>
 
         <p><b>Start:</b></p>
-        <input type="text" id="start" value="Chilliwack, BC">
+        <p><input type="text" id="start" value="SFU, BC"></p>
         <br>
-        <div id="waypointsBox">
-          <p><b>Waypoints:</b></p>
-          <input type="checkbox" name="waypoint" value="777 Pacific Blvd Vancouver, BC">BC Place<br>
-          <input type="checkbox" name="waypoint" value="Capilano Suspension Bridge">Capilano Suspension Bridge<br>
-          <input type="checkbox" name="waypoint" value="Granville Island">Granville Island<br>
-          <input type="checkbox" name="waypoint" value="Grouse Mountain">Grouse Mountain<br>
-          <input type="checkbox" name="waypoint" value="8811 River Rd, Richmond, BC">River Rock Casino<br>
-          <input type="checkbox" name="waypoint" value="Stanley park, BC">Stanley Park<br>
-          <input type="checkbox" name="waypoint" value="Science World Vancouver">Science World<br>
-          <input type="checkbox" name="waypoint" value="SFU, BC">Simon Fraser University, Burnaby Mountain Campus<br>
-          <input type="checkbox" name="waypoint" value="SFU surrey, BC">Simon Fraser University, Surrey Campus<br>
-          <input type="checkbox" name="waypoint" value="Vancouver Aquarium">Vancouver Aquarium<br>
-          <input type="checkbox" name="waypoint" value="750 Hornby St Vancouver, BC">Vancouver Art Gallery<br>
-          <input type="checkbox" name="waypoint" value="Vancouver Convention Centre">Vancouver Convention Centre<br>
-          <input type="checkbox" name="waypoint" value="YVR">Vancouver International Airport<br>
+
+        <div id="tripBox">
+          <p><b>Search For: </b></p>
+          <p>
+            <select id="destinationType">
+              <option selected disabled>Choose Destination Type</option>
+              <option value="park">Parks</option>
+              <option value="museum">Museums</option>
+            </select>
+          </p>
+          <p><b>Your Trip: </b></p>
+          <table id="trip">
+          </table>
         </div>
+
         <br>
         <p><b>End:</b></p>
-        <input type="text" id="end" value="SFU, BC">
+        <p><input type="text" id="end" value="SFU, BC"></p>
         <br>
-        <p><input type="submit" id="submit"></p>
+
+        <button id="calcRouteButton">Calculate Route</button>
         <p id="errorBox"></p>
       </div>
       <%= link_to 'Sign Out', login_url, id: 'back' %>
@@ -75,13 +58,14 @@
       var wayptsT = [];
       var tripTable = document.getElementById("trip");
       var tableIndex = 0;
+      var Alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 
-      //waypoints are hidden from user when public transit is selected DELETE ONCE TRIP IS IMPLEMENTED
+      //waypoints are disabled when public transit is selected - limitation of Google Maps API
       var hideWaypts = function() {
         if (document.getElementById('travelMode').value == "TRANSIT") {
-          document.getElementById('waypointsBox').style.display = 'none';
+          document.getElementById('tripBox').style.display = 'none';
         } else {
-          document.getElementById('waypointsBox').style.display = 'initial';
+          document.getElementById('tripBox').style.display = 'initial';
         }
       }
       document.getElementById('travelMode').addEventListener('change', hideWaypts);
@@ -104,11 +88,11 @@
 
         document.getElementById('calcRouteButton').addEventListener("click", callCalcRoute);
 
-        var makeRoute = function() {
+        /*var makeRoute = function() {
           calculateAndDisplayRoute(directionsService, directionsDisplay);
-        };
+        };*/
 
-        document.getElementById('submit').addEventListener("click", makeRoute);
+        //document.getElementById('submit').addEventListener("click", makeRoute);
 
         var service = new google.maps.places.PlacesService(map);
         var doSearch = function() {
@@ -162,7 +146,11 @@
         infowindows[i] = new google.maps.InfoWindow();
 
         google.maps.event.addListener(marker, 'click', function() {
-          infowindows[i].setContent("<b>Location Name: </b>" + places[i].name + "<br>" + "<p>Rating: " + places[i].rating + "</p>" + "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>");
+          var IWcontent = "<b>Location Name: </b>" + places[i].name + "<br>" +
+                          "<p>Rating: " + places[i].rating + "</p>" +
+                          "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>";
+
+          infowindows[i].setContent(IWcontent);
 
           clearIWs();
           infowindows[i].open(map, marker);
@@ -171,23 +159,40 @@
       }
 
       function addDest(i) {
-        //add the destination location to the wayptsT list
-        wayptsT.push({
-          location: places[i].geometry.location,
-          stopover: true
-        });
-        //add the destination name to the trip table
-        var row = tripTable.insertRow(tableIndex++);
-        var cell0 = row.insertCell(0);
-        var cell1 = row.insertCell(1);
-        cell0.innerHTML = places[i].name;
-        cell1.innerHTML = '<input type="button" value="Delete" onclick="removeDest(this)">';
+        //Doesn't allow more than 8 waypoints to be added - the limit imposed by Google Maps API
+        if (tableIndex < 8) {
+          //Doesn't allow the same destination to be added more than once
+          for (var j = 0; j < tableIndex; j++) {
+            if (tripTable.rows[j].cells[1].innerHTML == places[i].name) {
+              window.alert(places[i].name + ' has already been added to the trip.');
+              return;
+            }
+          }
+          //add the destination location to the waypts list
+          waypts.push({
+            location: places[i].geometry.location,
+            stopover: true
+          });
+          //add the destination name to the trip table
+          var row = tripTable.insertRow(tableIndex++);
+          var cell0 = row.insertCell(0);
+          cell0.innerHTML = '';
+          cell0.style.padding = '5px';
+          var cell1 = row.insertCell(1);
+          cell1.innerHTML = places[i].name;
+          cell1.style.padding = '5px';
+          var cell2 = row.insertCell(2);
+          cell2.innerHTML = '<input type="button" value="Delete" onclick="removeDest(this)">'
+          cell2.style.padding = '5px';
+        }else{
+          window.alert('Maximum Number of Destinations added!');
+        }
       }
 
       function removeDest(r) {
         var i = r.parentNode.parentNode.rowIndex;
-        //remove the place from the wayptsT array
-        wayptsT.splice(i, 1);
+        //remove the place from the waypts array
+        waypts.splice(i, 1);
         //remove the place from the trip table
         tripTable.deleteRow(i);
         tableIndex--;
@@ -213,24 +218,49 @@
         clearMarkers();
         document.getElementById("destinationType").value = "";
 
-        directionsService.route({
-          origin: document.getElementById("start").value,
-          destination: document.getElementById("end").value,
-          waypoints: wayptsT,
-          optimizeWaypoints: true,
-          travelMode: google.maps.TravelMode[document.getElementById("travelMode").value]
-        },
-        function(response, status) {
-          if (status === google.maps.DirectionsStatus.OK) {
-            document.getElementById('errorBox').innerHTML = '';
-            directionsDisplay.setDirections(response);
-          } else {
-            document.getElementById('errorBox').innerHTML = 'Error: ' + status;
-          }
-        })
+        if (document.getElementById('travelMode').value == "TRANSIT") {
+          directionsService.route({
+            origin: document.getElementById("start").value,
+            destination: document.getElementById("end").value,
+            travelMode: google.maps.TravelMode[document.getElementById("travelMode").value]
+          },
+          function(response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+              document.getElementById('errorBox').innerHTML = '';
+              directionsDisplay.setDirections(response);
+            } else {
+              document.getElementById('errorBox').innerHTML = 'Error: ' + status;
+            }
+          })
+        }else{
+          directionsService.route({
+            origin: document.getElementById("start").value,
+            destination: document.getElementById("end").value,
+            waypoints: waypts,
+            optimizeWaypoints: true,
+            travelMode: google.maps.TravelMode[document.getElementById("travelMode").value]
+          },
+          function(response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+              document.getElementById('errorBox').innerHTML = '';
+              orderTripTable(response);
+              directionsDisplay.setDirections(response);
+            } else {
+              document.getElementById('errorBox').innerHTML = 'Error: ' + status;
+            }
+          })
+        }
       }
 
-      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+      function orderTripTable(response) {
+        for (var j = 0; j < tripTable.rows.length; j++) {
+          var OrderCell = tripTable.rows[response.routes[0].waypoint_order[j]].cells[0];
+          OrderCell.innerHTML = Alpha[j+1];
+          OrderCell.style.fontWeight = 'bold';
+        }
+      }
+
+      /*function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         var wayptsAll = document.getElementsByName('waypoint');
 
         //Waypoints are disabled if user is using public transit
@@ -262,7 +292,7 @@
             document.getElementById('errorBox').innerHTML = 'Error: ' + status;
           }
         })
-      }
+      }*/
 
 
 
