@@ -101,8 +101,9 @@ function createMarker(i) {
 }
 
 function addDest(i) {
-  //Doesn't allow more than 8 waypoints to be added - the limit imposed by Google Maps API
-  if (tableIndex < 8) {
+  if (document.getElementById('travelMode').value == "TRANSIT") {
+    window.alert('API does not support waypoints with public transit.');
+  }else if (tableIndex < 8) { //Doesn't allow more than 8 waypoints to be added - the limit imposed by Google Maps API
     //Doesn't allow the same destination to be added more than once
     for (var j = 0; j < tableIndex; j++) {
       if (tripTable.rows[j].cells[1].innerHTML == places[i].name) {
