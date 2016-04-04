@@ -47,4 +47,5 @@ class UserTest < ActiveSupport::TestCase
     assert !user.save
     assert !user.errors[:password_confirmation].empty?
   end
+    
 end
