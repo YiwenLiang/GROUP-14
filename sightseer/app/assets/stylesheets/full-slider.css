@@ -42,7 +42,7 @@ footer {
 }
 
 #pictures{
-    width:100%;height:100%;    
+    width:100%;height:100%;
     padding:20px;
 }
 
@@ -53,4 +53,11 @@ footer {
 
 .crop img {
  height: auto;
+}
+
+/*Setting html and body height necessary for the slideshow and map*/
+html, body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
