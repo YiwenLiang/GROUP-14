@@ -47,15 +47,5 @@ class UserTest < ActiveSupport::TestCase
     assert !user.save
     assert !user.errors[:password_confirmation].empty?
   end
-  
-  test "Successful user creation" do
-    user=User.new
-    user.username="testing"
-    user.firstname="case"
-    user.lastname="example"
-    user.email="test@gmail.com"
-    user.password="123"
-    user.password_confirmation="123"
-    assert user.save
-  end
+    
 end
