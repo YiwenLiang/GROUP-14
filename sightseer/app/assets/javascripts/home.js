@@ -1,3 +1,4 @@
+    /*
     var map, places, infoWindow;
     var markers = [];
     var autocomplete;
@@ -43,7 +44,7 @@
 
         autocomplete = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */
-            (
+/*            (
                 document.getElementById('autocomplete')), {
                 types: ['(cities)'],
                 componentRestrictions: countryRestrict
@@ -235,3 +236,4 @@
             document.getElementById('iw-website-row').style.display = 'none';
         }
     }
+*/
