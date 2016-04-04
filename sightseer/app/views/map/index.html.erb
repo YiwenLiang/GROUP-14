@@ -79,7 +79,6 @@
       var infowindows =[];
       var markers = [];
       var waypts = [];
-      var wayptsT = [];
       var tripTable = document.getElementById("trip");
       var tableIndex = 0;
       var Alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
@@ -202,7 +201,7 @@
           var row = tripTable.insertRow(tableIndex++);
           var cell0 = row.insertCell(0);
           cell0.innerHTML = '';
-          cell0.style.padding = '5px';
+          //cell0.style.padding = '5px';
           var cell1 = row.insertCell(1);
           cell1.innerHTML = places[i].name;
           cell1.style.padding = '5px';
