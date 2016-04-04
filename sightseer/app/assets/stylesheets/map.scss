@@ -1,62 +1,30 @@
 // Place all the styles related to the map controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-html, body{
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
+
 #map{
   height: 100%;
   float: left;
-  width: 60%;
+  width: 70%;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
 }
-#titlebox {
-  width: 60%;
-  margin: auto;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  padding: 10px;
-  text-align: center;
-  background-color: #1a1a1a;
-  border-style: solid;
-  border-width: 5px;
-  border-radius: 10px;
-  border-color:#708090;
-}
-#title {
-  text-shadow:5px 2px 0 rgba(0,204,102,1);
-  font-weight:bold;
-  text-decoration:underline;
-  color:white;
-  letter-spacing:0pt;
-  word-spacing:2pt;
-  font-size:33px;
-  font-family:arial black, sans-serif;
-  line-height: 1;
-  position: static;
-  margin: 5px;
-  padding: 0;
-}
-#subtitle {
-  color: white;
-  line-height: 1;
-  margin: 5px;
-  padding: 0;
-}
-#infobox {
-  margin: auto;
+.infobox {
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 8px;
   width: 80%;
   background-color: white;
 }
-#panel {
+#rightpanel {
   height: 100%;
-  width: 40%;
+  width: 30%;
+  padding: 20px;
   float: left;
   background-color: #0066CC;
 }
-#back {
-  position: absolute;
-  right: 80px;
+#startPos, #endPos {
+  font-weight: bold;
+  display: none;
 }
