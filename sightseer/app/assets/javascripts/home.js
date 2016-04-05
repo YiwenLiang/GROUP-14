@@ -42,7 +42,7 @@ function initMap() {
   };
   
         $("#capilanoCampsite").click(function() {
-        $("#trip").val("295 Tomahawk Ave, West Vancouver, BC V7P 1C5");
+        $("#address").val("295 Tomahawk Ave, West Vancouver, BC V7P 1C5");
 
       });
 
@@ -70,12 +70,10 @@ function initMap() {
         $("#address").val("4600 Cambie St, Vancouver, BC V5Y 2M9");
 
       });
-
       $("#oakPark").click(function() {
         $("#address").val("Vancouver, BC V5Z 3S1");
 
       });
-      
       $("#vanierPark").click(function() {
         $("#address").val("1000 Chestnut St, Vancouver, BC V6J 3J9");
 
@@ -110,9 +108,10 @@ function initMap() {
         $("#address").val("Seawall, Vancouver, BC V6G 3E2");
 
       });
+  
+  document.getElementById('destinationType').addEventListener('change', doSearch);
 
 }
-//Popular Choice geocoder
 
 //Finds search results and passes them to callback function
 function search(service, dtype) {
@@ -168,6 +167,7 @@ function createMarker(i) {
   });
   return marker;
 }
+
 function addDest(i) {
   //Doesn't allow more than 8 waypoints to be added - the limit imposed by Google Maps API
   if (tableIndex < 8) {
