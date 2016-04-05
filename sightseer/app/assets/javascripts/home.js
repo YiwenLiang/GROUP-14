@@ -25,7 +25,7 @@ function initMap() {
   var directionsDisplay = new google.maps.DirectionsRenderer;
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 49.278947, lng: -122.916525},
+    center: {lat: 49.213146, lng: -122.920436},
     zoom: 11
   });
   directionsDisplay.setMap(map);
@@ -41,7 +41,7 @@ function initMap() {
     var dtype = document.getElementById('destinationType').value;
     search(service, dtype);
   };
-  
+
         $("#capilanoCampsite").click(function() {
         $("#end").val("295 Tomahawk Ave, West Vancouver, BC V7P 1C5");
 
@@ -109,7 +109,7 @@ function initMap() {
         $("#end").val("Seawall, Vancouver, BC V6G 3E2");
 
       });
-  
+
   document.getElementById('destinationType').addEventListener('change', doSearch);
 
 }
