@@ -68,12 +68,6 @@ function callback(results, status) {
       });
       markers[i].placeResult = places[i];
       showInfoWindow(i);
-
-      //createMarker(i);
-
-
-
-
     }
   }
 }
@@ -90,12 +84,26 @@ function showInfoWindow(i) {
         if (status !== google.maps.places.PlacesServiceStatus.OK) {
           return;
         }
-        var IWcontent = "<b>Location Name: </b>" + place.name + "<br>" +
-                        "<p>Rating: " + place.rating + "</p>" +
-                        "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>" +
-                        place.formatted_address;
+        var IWcontent = "No name";
+        if (place.name) {
+          IWcontent = "<p><b>Location Name: </b>" + place.name + "</p>";
+        }
+        if (place.rating) {
+          IWcontent += "<p>Rating: " + place.rating + "</p>";
+        }
+        if (place.formatted_address) {
+          IWcontent += "<p>Address: " + place.formatted_address + "</p>";
+        }
+        if (place.formatted_phone_number) {
+          IWcontent += "<p>Phone: " + place.formatted_phone_number + "</p>"
+        }
+        if (place.website) {
+          IWcontent += "<p>Website: <a class='IWlink' href=" + place.website + " target='_blank'>" + place.website + "</a></p>";
+        }
+        IWcontent += "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>";
         infowindows[i] = new google.maps.InfoWindow();
         infowindows[i].setContent(IWcontent);
+        clearIWs();
         infowindows[i].open(map, marker);
       });
   })
@@ -185,8 +193,10 @@ function clearMarkers() {
 
 //closes any opened Infowindows. Called when route is being displayed.
 function clearIWs() {
-  for (var i = 0; i < infowindows.length; i++) {
-    infowindows[i].close();
+  for (var j = 0; j < infowindows.length; j++) {
+    if (infowindows[j]) {
+      infowindows[j].close();
+    }
   }
 }
 
