@@ -132,24 +132,11 @@ function geocodeAddress(geocoder, resultsMap) {
         position: results[0].geometry.location,
         title: 'Click for more details'
       });
+      
       var infoWindow = new google.maps.InfoWindow({
-      content: "No name";
-        if (place.name) {
-          IWcontent = "<p><b>Location Name: </b>" + place.name + "</p>";
-        }
-        if (place.rating) {
-          IWcontent += "<p>Rating: " + place.rating + "</p>";
-        }
-        if (place.formatted_address) {
-          IWcontent += "<p>Address: " + place.formatted_address + "</p>";
-        }
-        if (place.formatted_phone_number) {
-          IWcontent += "<p>Phone: " + place.formatted_phone_number + "</p>"
-        }
-        if (place.website) {
-          IWcontent += "<p>Website: <a class='IWlink' href=" + place.website + " target='_blank'>" + place.website + "</a></p>";
-        }
-        IWcontent += "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>";
+      content: "<b>Location Name: </b>" + results[0].name + "<br>" +
+                    "<p>Rating: " + results[0].rating + "</p>" +
+                    "<button id='addDest' type='button' onclick='addDest("+0+")'>Add to Trip</button>"
       });
       
       google.maps.event.addListener(marker, 'click', function() {
