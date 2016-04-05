@@ -1,6 +1,7 @@
 var map;
+var service;
 var places = [];
-var infowindows =[];
+var infowindows = [];
 var markers = [];
 var waypts = [];
 var tripTable = document.getElementById("trip");
@@ -35,7 +36,7 @@ function initMap() {
 
   document.getElementById('calcRouteButton').addEventListener("click", callCalcRoute);
 
-  var service = new google.maps.places.PlacesService(map);
+  service = new google.maps.places.PlacesService(map);
   var doSearch = function() {
     var dtype = document.getElementById('destinationType').value;
     search(service, dtype);
@@ -128,49 +129,89 @@ function callback(results, status) {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       places[i] = results[i];
-      markers[i] = createMarker(i);
+      markers[i] = new google.maps.Marker({
+        map: map,
+        position: places[i].geometry.location,
+        animation: google.maps.Animation.DROP
+      });
+      markers[i].placeResult = places[i];
+      showInfoWindow(i);
     }
   }
 }
 
+
+function showInfoWindow(i) {
+  google.maps.event.addListener(markers[i], 'click', function() {
+    var marker = this;
+    service.getDetails({
+      placeId: marker.placeResult.place_id
+    },
+      function(place, status) {
+        if (status !== google.maps.places.PlacesServiceStatus.OK) {
+          return;
+        }
+        var IWcontent = "No name";
+        if (place.name) {
+          IWcontent = "<p><b>Location Name: </b>" + place.name + "</p>";
+        }
+        if (place.rating) {
+          IWcontent += "<p>Rating: " + place.rating + "</p>";
+        }
+        if (place.formatted_address) {
+          IWcontent += "<p>Address: " + place.formatted_address + "</p>";
+        }
+        if (place.formatted_phone_number) {
+          IWcontent += "<p>Phone: " + place.formatted_phone_number + "</p>"
+        }
+        if (place.website) {
+          IWcontent += "<p>Website: <a class='IWlink' href=" + place.website + " target='_blank'>" + place.website + "</a></p>";
+        }
+        IWcontent += "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>";
+        infowindows[i] = new google.maps.InfoWindow();
+        infowindows[i].setContent(IWcontent);
+        clearIWs();
+        infowindows[i].open(map, marker);
+      });
+  })
+}
+
+/*
 //creates a marker and an Infowindow that opens when the marker is clicked
 function createMarker(i) {
-  var marker = new google.maps.Marker({
+  markers[i] = new google.maps.Marker({
     map: map,
     position: places[i].geometry.location,
     animation: google.maps.Animation.DROP
   });
-
-  /*
-  //Will need to get this working for infowindows to have things like phone number or price
-  places.getDetails({
-    placeId: places[i].place_id
-  },
-  function(placeResults, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-      places[i] = placeResults;
-    }
+  markers[i].placeResult = places[i];
+  google.maps.event.addListener(markers[i], 'click', function() {
+    service.getDetails({
+      placeId: markers[i].placeResult.place_id
+    },
+    function(place, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        //window.alert(place.formatted_address);
+        var IWcontent = "<b>Location Name: </b>" + place.name + "<br>" +
+                        "<p>Rating: " + place.rating + "</p>" +
+                        "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>" +
+                        place.formatted_address;
+        infowindows[i] = new google.maps.InfoWindow();
+        infowindows[i].setContent(IWcontent);
+        clearIWs();
+        infowindows[i].open(map, markers[i]);
+      }else{
+        window.alert("status NOT OK");
+      }
+    });
   });
-  */
-
-  infowindows[i] = new google.maps.InfoWindow();
-
-  google.maps.event.addListener(marker, 'click', function() {
-    var IWcontent = "<b>Location Name: </b>" + places[i].name + "<br>" +
-                    "<p>Rating: " + places[i].rating + "</p>" +
-                    "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>";
-
-    infowindows[i].setContent(IWcontent);
-
-    clearIWs();
-    infowindows[i].open(map, marker);
-  });
-  return marker;
 }
+*/
 
 function addDest(i) {
-  //Doesn't allow more than 8 waypoints to be added - the limit imposed by Google Maps API
-  if (tableIndex < 8) {
+  if (document.getElementById('travelMode').value == "TRANSIT") {
+    window.alert('API does not support waypoints with public transit.');
+  }else if (tableIndex < 8) { //Doesn't allow more than 8 waypoints to be added - the limit imposed by Google Maps API
     //Doesn't allow the same destination to be added more than once
     for (var j = 0; j < tableIndex; j++) {
       if (tripTable.rows[j].cells[1].innerHTML == places[i].name) {
@@ -219,8 +260,10 @@ function clearMarkers() {
 
 //closes any opened Infowindows. Called when route is being displayed.
 function clearIWs() {
-  for (var i = 0; i < infowindows.length; i++) {
-    infowindows[i].close();
+  for (var j = 0; j < infowindows.length; j++) {
+    if (infowindows[j]) {
+      infowindows[j].close();
+    }
   }
 }
 
