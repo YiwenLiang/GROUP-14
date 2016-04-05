@@ -134,9 +134,7 @@ function geocodeAddress(geocoder, resultsMap) {
       });
       
       var infoWindow = new google.maps.InfoWindow({
-      content: "<b>Location Name: </b>" + results[0].name + "<br>" +
-                    "<p>Rating: " + results[0].rating + "</p>" +
-                    "<button id='addDest' type='button' onclick='addDest("+0+")'>Add to Trip</button>"
+      content: google.maps.GeocoderAddressComponent
       });
       
       google.maps.event.addListener(marker, 'click', function() {
