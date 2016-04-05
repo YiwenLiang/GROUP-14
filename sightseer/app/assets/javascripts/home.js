@@ -41,28 +41,7 @@ function initMap() {
     search(service, dtype);
   };
   
-  //geocoder
-  var marker = new google.maps.Geocoder();
-      
-  document.getElementById('submit').addEventListener('click', function() {
-    geocodeAddress(marker, map);
-  });
-  
-  var infoWindow = new google.maps.InfoWindow({
-      content: "TESTING PLEASE WORK"
-  });
-  
-  google.maps.event.addListener(marker, 'click', function() {
-    infoWindow.open(map, marker);
-  });
-  
-  //
-
-  document.getElementById('destinationType').addEventListener('change', doSearch);
-  
-  //Functions for Popular Choices
-      //Campsites
-      $("#capilanoCampsite").click(function() {
+        $("#capilanoCampsite").click(function() {
         $("#address").val("295 Tomahawk Ave, West Vancouver, BC V7P 1C5");
 
       });
@@ -129,6 +108,15 @@ function initMap() {
         $("#address").val("Seawall, Vancouver, BC V6G 3E2");
 
       });
+  
+  //geocoder
+  var marker = new google.maps.Geocoder();
+      
+  document.getElementById('submit').addEventListener('click', function() {
+    geocodeAddress(marker, map);
+  });
+  //
+  document.getElementById('destinationType').addEventListener('change', doSearch);
 
 }
 //Popular Choice geocoder
@@ -143,6 +131,29 @@ function geocodeAddress(geocoder, resultsMap) {
         map: resultsMap,
         position: results[0].geometry.location,
         title: 'Click for more details'
+      });
+      var infoWindow = new google.maps.InfoWindow({
+      content: "No name";
+        if (place.name) {
+          IWcontent = "<p><b>Location Name: </b>" + place.name + "</p>";
+        }
+        if (place.rating) {
+          IWcontent += "<p>Rating: " + place.rating + "</p>";
+        }
+        if (place.formatted_address) {
+          IWcontent += "<p>Address: " + place.formatted_address + "</p>";
+        }
+        if (place.formatted_phone_number) {
+          IWcontent += "<p>Phone: " + place.formatted_phone_number + "</p>"
+        }
+        if (place.website) {
+          IWcontent += "<p>Website: <a class='IWlink' href=" + place.website + " target='_blank'>" + place.website + "</a></p>";
+        }
+        IWcontent += "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>";
+      });
+      
+      google.maps.event.addListener(marker, 'click', function() {
+      infoWindow.open(map, marker);
       });
     }
     else {
