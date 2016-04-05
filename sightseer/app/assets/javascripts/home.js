@@ -1,4 +1,5 @@
 var map;
+var service;
 var places = [];
 var infowindows =[];
 var markers = [];
@@ -35,7 +36,7 @@ function initMap() {
 
   document.getElementById('calcRouteButton').addEventListener("click", callCalcRoute);
 
-  var service = new google.maps.places.PlacesService(map);
+  service = new google.maps.places.PlacesService(map);
   var doSearch = function() {
     var dtype = document.getElementById('destinationType').value;
     search(service, dtype);
@@ -60,44 +61,39 @@ function callback(results, status) {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       places[i] = results[i];
-      markers[i] = createMarker(i);
+      createMarker(i);
     }
   }
 }
 
 //creates a marker and an Infowindow that opens when the marker is clicked
 function createMarker(i) {
-  var marker = new google.maps.Marker({
+  markers[i] = new google.maps.Marker({
     map: map,
     position: places[i].geometry.location,
     animation: google.maps.Animation.DROP
   });
-
-  /*
-  //Will need to get this working for infowindows to have things like phone number or price
-  places.getDetails({
-    placeId: places[i].place_id
-  },
-  function(placeResults, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-      places[i] = placeResults;
-    }
+  markers[i].placeResult = places[i];
+  google.maps.event.addListener(markers[i], 'click', function() {
+    service.getDetails({
+      placeId: markers[i].placeResult.place_id
+    },
+    function(place, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        //window.alert(place.formatted_address);
+        var IWcontent = "<b>Location Name: </b>" + place.name + "<br>" +
+                        "<p>Rating: " + place.rating + "</p>" +
+                        "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>" +
+                        place.formatted_address;
+        infowindows[i] = new google.maps.InfoWindow();
+        infowindows[i].setContent(IWcontent);
+        clearIWs();
+        infowindows[i].open(map, markers[i]);
+      }else{
+        window.alert("status NOT OK");
+      }
+    });
   });
-  */
-
-  infowindows[i] = new google.maps.InfoWindow();
-
-  google.maps.event.addListener(marker, 'click', function() {
-    var IWcontent = "<b>Location Name: </b>" + places[i].name + "<br>" +
-                    "<p>Rating: " + places[i].rating + "</p>" +
-                    "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>";
-
-    infowindows[i].setContent(IWcontent);
-
-    clearIWs();
-    infowindows[i].open(map, marker);
-  });
-  return marker;
 }
 
 function addDest(i) {
