@@ -42,70 +42,70 @@ function initMap() {
   };
   
         $("#capilanoCampsite").click(function() {
-        $("#address").val("295 Tomahawk Ave, West Vancouver, BC V7P 1C5");
+        $("#end").val("295 Tomahawk Ave, West Vancouver, BC V7P 1C5");
 
       });
 
       $("#seymourCampsite").click(function() {
-        $("#address").val("Mt Seymour Rd, North Vancouver, BC V7G 1L3");
+        $("#end").val("Mt Seymour Rd, North Vancouver, BC V7G 1L3");
 
       });
 
       $("#dogwoodCampsite").click(function() {
-        $("#address").val("15151 112 Ave, Surrey, BC V3R 6G8");
+        $("#end").val("15151 112 Ave, Surrey, BC V3R 6G8");
 
       });
 
       $("#tyneheadCampsite").click(function() {
-        $("#address").val("16275 102 Ave, Surrey, BC V4N 2K7");
+        $("#end").val("16275 102 Ave, Surrey, BC V4N 2K7");
 
       });
       //Parks
 
       $("#stanleyPark").click(function() {
-        $("#address").val("Vancouver, BC V6G 1Z4");
+        $("#end").val("Vancouver, BC V6G 1Z4");
 
       });
       $("#queenPark").click(function() {
-        $("#address").val("4600 Cambie St, Vancouver, BC V5Y 2M9");
+        $("#end").val("4600 Cambie St, Vancouver, BC V5Y 2M9");
 
       });
       $("#oakPark").click(function() {
-        $("#address").val("Vancouver, BC V5Z 3S1");
+        $("#end").val("Vancouver, BC V5Z 3S1");
 
       });
       $("#vanierPark").click(function() {
-        $("#address").val("1000 Chestnut St, Vancouver, BC V6J 3J9");
+        $("#end").val("1000 Chestnut St, Vancouver, BC V6J 3J9");
 
       });
       $("#callisterPark").click(function() {
-        $("#address").val("Hastings-Sunrise, Vancouver, BC");
+        $("#end").val("Hastings-Sunrise, Vancouver, BC");
 
       });
       $("#amblesidePark").click(function() {
-        $("#address").val("1150 Marine Dr, West Vancouver, BC V6T 1Z4");
+        $("#end").val("1150 Marine Dr, West Vancouver, BC V6T 1Z4");
 
       });
 
       //Beach
       $("#spanishBeach").click(function() {
-        $("#address").val("4801 NW Marine Drive, Vancouver, BC V6T 1E2");
+        $("#end").val("4801 NW Marine Drive, Vancouver, BC V6T 1E2");
 
       });
       $("#englishBeach").click(function() {
-        $("#address").val("Vancouver, BC V6E 1V3");
+        $("#end").val("Vancouver, BC V6E 1V3");
 
       });
       $("#kitslanoBeach").click(function() {
-        $("#address").val("1499 Arbutus St, Vancouver, BC V6J 5N2");
+        $("#end").val("1499 Arbutus St, Vancouver, BC V6J 5N2");
 
       });
       $("#jerichoBeach").click(function() {
-        $("#address").val("3941 Point Grey Rd, Vancouver, BC V6R 4L9");
+        $("#end").val("3941 Point Grey Rd, Vancouver, BC V6R 4L9");
 
       });
       $("#thirdBeach").click(function() {
-        $("#address").val("Seawall, Vancouver, BC V6G 3E2");
+        $("#end").val("Seawall, Vancouver, BC V6G 3E2");
 
       });
   
