@@ -6,18 +6,38 @@ class SessionsControllerTest < ActionController::TestCase
     assert_response :success
   end
   
-  test "Login Username exists" do
-    user1 = User.new(username: '123')
-    User.find_by(username: '123')
-    assert_response 200
+  test "Failed Login" do
+    user=User.new
+    user.username="123"
+    user.firstname="hello"
+    user.lastname="world"
+    user.email="helloworld@sfu.ca"
+    user.password="123456"
+    user.password_confirmation="123456"
+    user.admin_type=0
+    
+    user.save
+    assert user.save
+    assert user.valid?
+    check=user.authenticate("1234567")
+    assert !check 
   end
   
-  test "Login account exists" do
-    user = User.new(:password=>"123")
+  test "Successful Login" do
+    user=User.new
     user.username="123"
+    user.firstname="hello"
+    user.lastname="world"
+    user.email="helloworld@sfu.ca"
+    user.password="123456"
+    user.password_confirmation="123456"
+    user.admin_type=0
+
     user.save
-    User.find_by(username: '123').try(:authenticate, '123')
-    assert_response 200
+    assert user.save
+    assert user.valid?
+    check=user.authenticate("123456")
+    assert check 
   end
 
 end
