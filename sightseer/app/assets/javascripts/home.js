@@ -40,11 +40,117 @@ function initMap() {
     var dtype = document.getElementById('destinationType').value;
     search(service, dtype);
   };
+  
+  //geocoder
+  var marker = new google.maps.Geocoder();
+      
+  document.getElementById('submit').addEventListener('click', function() {
+    geocodeAddress(marker, map);
+  });
+  
+  var infoWindow = new google.maps.InfoWindow({
+      content: "TESTING PLEASE WORK"
+  });
+  
+  google.maps.event.addListener(marker, 'click', function() {
+    infoWindow.open(map, marker);
+  });
+  
+  //
 
   document.getElementById('destinationType').addEventListener('change', doSearch);
+  
+  //Functions for Popular Choices
+      //Campsites
+      $("#capilanoCampsite").click(function() {
+        $("#address").val("295 Tomahawk Ave, West Vancouver, BC V7P 1C5");
+
+      });
+
+      $("#seymourCampsite").click(function() {
+        $("#address").val("Mt Seymour Rd, North Vancouver, BC V7G 1L3");
+
+      });
+
+      $("#dogwoodCampsite").click(function() {
+        $("#address").val("15151 112 Ave, Surrey, BC V3R 6G8");
+
+      });
+
+      $("#tyneheadCampsite").click(function() {
+        $("#address").val("16275 102 Ave, Surrey, BC V4N 2K7");
+
+      });
+      //Parks
+
+      $("#stanleyPark").click(function() {
+        $("#address").val("Vancouver, BC V6G 1Z4");
+
+      });
+      $("#queenPark").click(function() {
+        $("#address").val("4600 Cambie St, Vancouver, BC V5Y 2M9");
+
+      });
+      $("#granvillePark").click(function() {
+        $("#address").val("3001 Fir St, Vancouver, BC V6G 1Z4");
+
+      });
+      $("#vanierPark").click(function() {
+        $("#address").val("1000 Chestnut St, Vancouver, BC V6J 3J9");
+
+      });
+      $("#callisterPark").click(function() {
+        $("#address").val("Hastings-Sunrise, Vancouver, BC");
+
+      });
+      $("#amblesidePark").click(function() {
+        $("#address").val("1150 Marine Dr, West Vancouver, BC V6T 1Z4");
+
+      });
+
+      //Beach
+      $("#spanishBeach").click(function() {
+        $("#address").val("4801 NW Marine Drive, Vancouver, BC V6T 1E2");
+
+      });
+      $("#englishBeach").click(function() {
+        $("#address").val("Vancouver, BC V6E 1V3");
+
+      });
+      $("#kitslanoBeach").click(function() {
+        $("#address").val("1499 Arbutus St, Vancouver, BC V6J 5N2");
+
+      });
+      $("#jerichoBeach").click(function() {
+        $("#address").val("3941 Point Grey Rd, Vancouver, BC V6R 4L9");
+
+      });
+      $("#thirdBeach").click(function() {
+        $("#address").val("Seawall, Vancouver, BC V6G 3E2");
+
+      });
 
 }
+//Popular Choice geocoder
+function geocodeAddress(geocoder, resultsMap) {
+  var address = document.getElementById('address').value;
+  geocoder.geocode({
+    'address': address
+  }, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location,
+        title: 'Click for more details'
+      });
+    }
+    else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
 
+}
 //Finds search results and passes them to callback function
 function search(service, dtype) {
   service.nearbySearch({
