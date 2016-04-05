@@ -1,7 +1,7 @@
 var map;
 var service;
 var places = [];
-var infowindows =[];
+var infowindows = [];
 var markers = [];
 var waypts = [];
 var tripTable = document.getElementById("trip");
@@ -61,11 +61,47 @@ function callback(results, status) {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       places[i] = results[i];
-      createMarker(i);
+      markers[i] = new google.maps.Marker({
+        map: map,
+        position: places[i].geometry.location,
+        animation: google.maps.Animation.DROP
+      });
+      markers[i].placeResult = places[i];
+      showInfoWindow(i);
+
+      //createMarker(i);
+
+
+
+
     }
   }
 }
 
+
+function showInfoWindow(i) {
+  window.alert(i);
+  google.maps.event.addListener(markers[i], 'click', function() {
+    var marker = this;
+    service.getDetails({
+      placeId: marker.placeResult.place_id
+    },
+      function(place, status) {
+        if (status !== google.maps.places.PlacesServiceStatus.OK) {
+          return;
+        }
+        var IWcontent = "<b>Location Name: </b>" + place.name + "<br>" +
+                        "<p>Rating: " + place.rating + "</p>" +
+                        "<button id='addDest' type='button' onclick='addDest("+i+")'>Add to Trip</button>" +
+                        place.formatted_address;
+        infowindows[i] = new google.maps.InfoWindow();
+        infowindows[i].setContent(IWcontent);
+        infowindows[i].open(map, marker);
+      });
+  })
+}
+
+/*
 //creates a marker and an Infowindow that opens when the marker is clicked
 function createMarker(i) {
   markers[i] = new google.maps.Marker({
@@ -95,6 +131,7 @@ function createMarker(i) {
     });
   });
 }
+*/
 
 function addDest(i) {
   if (document.getElementById('travelMode').value == "TRANSIT") {
