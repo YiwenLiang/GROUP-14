@@ -42,7 +42,7 @@ function initMap() {
   };
   
         $("#capilanoCampsite").click(function() {
-        $("#address").val("295 Tomahawk Ave, West Vancouver, BC V7P 1C5");
+        $("#trip").val("295 Tomahawk Ave, West Vancouver, BC V7P 1C5");
 
       });
 
@@ -70,10 +70,12 @@ function initMap() {
         $("#address").val("4600 Cambie St, Vancouver, BC V5Y 2M9");
 
       });
-      $("#granvillePark").click(function() {
-        $("#address").val("3001 Fir St, Vancouver, BC V6G 1Z4");
+
+      $("#oakPark").click(function() {
+        $("#address").val("Vancouver, BC V5Z 3S1");
 
       });
+      
       $("#vanierPark").click(function() {
         $("#address").val("1000 Chestnut St, Vancouver, BC V6J 3J9");
 
@@ -108,45 +110,10 @@ function initMap() {
         $("#address").val("Seawall, Vancouver, BC V6G 3E2");
 
       });
-  
-  //geocoder
-  var marker = new google.maps.Geocoder();
-      
-  document.getElementById('submit').addEventListener('click', function() {
-    geocodeAddress(marker, map);
-  });
-  //
-  document.getElementById('destinationType').addEventListener('change', doSearch);
 
 }
 //Popular Choice geocoder
-function geocodeAddress(geocoder, resultsMap) {
-  var address = document.getElementById('address').value;
-  geocoder.geocode({
-    'address': address
-  }, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-      resultsMap.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-        map: resultsMap,
-        position: results[0].geometry.location,
-        title: 'Click for more details'
-      });
-      
-      var infoWindow = new google.maps.InfoWindow({
-      content: google.maps.GeocoderAddressComponent
-      });
-      
-      google.maps.event.addListener(marker, 'click', function() {
-      infoWindow.open(map, marker);
-      });
-    }
-    else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
 
-}
 //Finds search results and passes them to callback function
 function search(service, dtype) {
   service.nearbySearch({
@@ -201,7 +168,6 @@ function createMarker(i) {
   });
   return marker;
 }
-
 function addDest(i) {
   //Doesn't allow more than 8 waypoints to be added - the limit imposed by Google Maps API
   if (tableIndex < 8) {
