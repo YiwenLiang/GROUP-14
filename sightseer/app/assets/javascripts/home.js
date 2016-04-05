@@ -74,7 +74,6 @@ function callback(results, status) {
 
 
 function showInfoWindow(i) {
-  window.alert(i);
   google.maps.event.addListener(markers[i], 'click', function() {
     var marker = this;
     service.getDetails({
